@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\adaf16430469cf5af5eb2c2e097415dc44aa4462\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_4dae383cb388fe42fc2f8d449cc58c899738725b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\common-1.0.0_b20e5ef254d1a0355b4deb57113ae230a8c1f8c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_b04da7e32b59f9ee09b1968b411af1c5fcbd3e2b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\javax.inject-1_5315fa80bd3e37acedc0de9ffb7506da23a26acb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-urlconnection\3.4.1\63994437f62bc861bc20c605d12962f7246116d1\okhttp-urlconnection-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="63994437f62bc861bc20c605d12962f7246116d1">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-3.4.1_57811f116b30c3da8e64ed781ee42ba56a5d14a8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\857ac4f7edd8edf31a18f6aafbbb9d346e124357\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_797c5085e14f55861817aa091eecacdabebc0273.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\ff02d08db0e94bdc5d083313e5c27fcb53c64f95\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_e727adf86c6c0e956846187cb26061b18860e8a7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\com.facebook.fbui.textlayoutbuilder\staticlayout-proxy\1.0\f162442a19fff13995fbd51ba414d9ee05579080\staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\staticlayout-proxy-1.0_7a2226ec78ed99d6f29035b7ad5dbbae25618aec.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\173629e2e53dbab16c591e92b770a17044c90e13\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="508f50705b4fde51a16259f29c854201a3044516">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_af8fc74ff8461d736ed70845d0c3643f9f6fa06d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\f0b2400f3a370a8e71061292bca73a827b788de1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_b86db016f2bacfcc47d006415001f09708f2fe75.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\f6b01532713a85ecbfcf640f3d49602edca43b61\output\jars\libs\infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\infer-annotations-4.0_60af7fa770ce5c061ee00802f01391ec1278db78.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\8ddc29c7d45daf4c457fddb867da4a6a9d2a38b8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_756a3f6990692d7a2a319f2d59a04b8e7d90440f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\5440d55982d5f1aef54795902ccac2c90775d2f9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_f6ac1051f6db221ef54914ce9768d9784554d2e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\e4c28f7b17f743578a11cc54729de5ed0927cd80\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_0ec581a34841f86ec5289e3d96e4b9c83c2eb20e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\c1d0c4b8133e78d25d75a5b92551c265938b2d5b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="d9c4402c3057225d80cbbbec52154e7a25b0ebdf">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_19346c445474f1a1ff57b7ef68b68da3cd839917.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-ws\3.4.1\8ace66ef7002d98f633377c9e67daeeb196d8c3b\okhttp-ws-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\okhttp-ws-3.4.1_a96a830aedfeb7e3fa715ae8bfabbee80e75855a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.4.1\c7c4f9e35c2fd5900da24f9872e3971801f08ce0\okhttp-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\okhttp-3.4.1_5d430dda193dce896fdb9dfbf83db4bdea62f96d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\924738789d3609be7f6abed9801507b93d48fa71\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_e7c388f8c2fe482a34006fdce42b242343f0b870.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\d697fa729b475a642a29127e90a286599a630a6d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_82fb85efe31e3ca5366f9e6cb3265f3f11cc821c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\7621930689df617af08e9b033cbffc337cb9f898\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="ba9b39366b723ccff6359d1117332968e98a4aca">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_ecb7d0e0902529c238429e1fb6aff051d7ee3621.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\26.1.0\814258103cf26a15fcc26ecce35f5b7d24b73f8\support-annotations-26.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\support-annotations-26.1.0_4cbfd53463cb76cc7a76f57674c415444b96f8b6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.0\5871fb60dc68d67da54a663c3fd636a10a532948\jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\jsr305-3.0.0_74eda910f71639f2557153a7a67c2d94a7c4048e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.9.0\f824591a0016efbaeddb8300bee54832a1398cfa\okio-1.9.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\okio-1.9.0_f47bfda5e3542e88aab90d75ec11c83784544816.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\f6b01532713a85ecbfcf640f3d49602edca43b61\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="0d3e48e200296061415952a358fad487e129adaa">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_ea727e0e2c1b21074814e003fc8605a4465b620f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\4b4c3442fb9f9910921295ae402eb57465451a6f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_a2cc5317f7fe2b182394d7c9af61e24d7a936340.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\c6421103c809bb759daeab97db25da2ef1a2e8ae\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_a4697bc2de2b848494af2d7c6001ce024eb5d751.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.0\e414a4cb28434e25c4f6aa71426eb20cf4874ae9\common-1.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\common-1.0.0_784ac18e12f42f7a1bf57ff508dbb951010a80fb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\185a7a5128e56ca74e12906656a7d736eacb1885\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_3cdaf0e60751611f1ddf2a07293ad6e6b3be2d46.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\0cb8396920095b1f48ed91c60bce80cd4cf3f398\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_14f377a3f8bb2e893e54cfd23970a8c8d22d53ef.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\685b9b27393abd24cf5f7c438f4dcd93ee03b012\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_206d2bcd57d99eb23998f1dafa30855a427e4172.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\win7\.android\build-cache\8eecf66a054e0f825f1127d5461e99ad04c99473\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
+        <dex dex="C:\Users\win7\Yell\android\app\build\intermediates\pre-dexed\debug\classes_c20bd01cc8065be32e0a26d6d43ed4ac073ae691.jar" />
+    </item>
+
+</items>

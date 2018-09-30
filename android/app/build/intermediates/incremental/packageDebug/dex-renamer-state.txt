@@ -1,0 +1,4 @@
+#Sat Jul 14 05:40:18 AST 2018
+base.0=C\:\\Users\\win7\\Yell\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=C\:\\Users\\win7\\Yell\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
