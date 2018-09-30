@@ -76,7 +76,7 @@ firebase.initializeApp(config);
        
          <Container style={styles.container} >
          <View  style={styles.cent} >
-         <Image source={require('./logo.png')}
+         <Image source={require('./img/logo.png')}
             style={styles.img}  />
       
             </View>
