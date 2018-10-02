@@ -36,7 +36,7 @@ import {
 import { createStackNavigator } from 'react-navigation';
 
 import drawernav from './drawer';
-import complaints2 from './complaints2';
+import complaints from './complaints';
 import DrawerButton from './DrawerButton';
 import maintain from "./maintain";
 import rooms from './rooms.js';
@@ -66,8 +66,8 @@ navigationOptions: {
 screen:rooms
 
   },
-  complaints2:{
-    screen:complaints2,
+  complaints:{
+    screen:complaints,
     navigationOptions:{
       title:'Complaints'
     }

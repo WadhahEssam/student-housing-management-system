@@ -36,7 +36,7 @@ import {
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
 
-export default class complaints2 extends React.Component {
+export default class complaints extends React.Component {
 render(){
 return(
 

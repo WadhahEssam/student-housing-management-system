@@ -56,7 +56,7 @@ return(
           <Grid>
             <Row style={{ backgroundColor: '#0B3861', borderWidth:3, borderColor:'white',
              }}
-             onPress={() => this.props.navigation.navigate('complaints2')}>
+             onPress={() => this.props.navigation.navigate('complaints')}>
 
 
 <View  style={{ flex:1, justifyContent:'center', alignItems:'center'}}>
