@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-   
+  ImageBackground,
   KeyboardAvoidingView,
   ScrollView
 } from 'react-native';
@@ -71,10 +71,23 @@ firebase.initializeApp(config);
 
   render() {
     return (
-
+      
+ 
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-       
+      
+
          <Container style={styles.container} >
+       
+         <ImageBackground
+ source={require('./img/background.png')}
+  style={{width: '100%', height: '100%'}}
+> 
+
+       
+
+ 
+ 
+
          <View  style={styles.cent} >
          <Image source={require('./img/logo.png')}
             style={styles.img}  />
@@ -85,7 +98,7 @@ firebase.initializeApp(config);
            <View style={styles.textinput}>
             <Form>
               <Item floatingLabel>
-                <Label> KSU Student Email </Label>
+                <Label style={{color:'#dedbdc'}}> KSU Student Email </Label>
                 <Input autoCorrect={false}
                   style={styles.textinput}
                   autoCapitalize="none"
@@ -94,7 +107,7 @@ firebase.initializeApp(config);
 
               </Item >
               < Item floatingLabel>
-                <Label> Password </Label>
+                <Label style={{color:'#dedbdc'}}> Password </Label>
                 <Input autoCorrect={false} secureTextEntry={true}
                   style={styles.textinput}
                   autoCapitalize="none"
@@ -105,23 +118,24 @@ firebase.initializeApp(config);
 
                 full
                 rounded
-                success
+                info
                 onPress={() => this.login(this.state.email, this.state.password)}
               >
-                <Text style={{ color: 'white' }}>Login</Text>
+                <Text style={{ color: 'white', fontWeight:'bold' }}>Login</Text>
               </Button>
                
-
+ 
             </Form>
             </View>
             </ScrollView>
- 
-          
+            </ImageBackground>
         </Container>
- 
         
+
+         
       </KeyboardAvoidingView>
-    );
+     
+    ); 
   }
 }
  
@@ -152,8 +166,8 @@ const styles = StyleSheet.create({
     flex:1,
     
      marginTop:20,
-     width: 270,
-     height: 20, 
+     width: 240,
+     height: 15, 
     
      
     
