@@ -56,7 +56,7 @@ return(
                 <View >
  
                 <Image
-  source={require('./add.png')}
+  source={require('./img/add.png')}
   style={styles.icon}
   /> 
                   
@@ -87,7 +87,7 @@ return(
  
                   
                 <Image
-  source={require('./room.png')}
+  source={require('./img/room.png')}
   style={styles.icon2}
   /> 
                 </View>   

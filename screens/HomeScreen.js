@@ -1,3 +1,9 @@
+
+
+
+//this page will be shown if the student doesn't have a room
+
+
 import React, { Component } from "react";
 import {
   AppRegistry,

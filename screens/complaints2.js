@@ -59,7 +59,7 @@ return(
                 <View >
  
                 <Image
-  source={require('./add.png')}
+  source={require('./img/add.png')}
   style={styles.icon}
   /> 
                   
@@ -90,7 +90,7 @@ return(
  
                   
                 <Image 
-  source={require('./old.png')}
+  source={require('./img/old.png')}
   style={styles.icon4}
   /> 
                 </View>    
@@ -115,7 +115,7 @@ return(
                 <View >
  
                 <Image
-  source={require('./maintain.png')}
+  source={require('./img/maintain.png')}
   style={styles.icon3}
   /> 
                   
@@ -148,7 +148,7 @@ return(
  
                   
                 <Image
-  source={require('./statue.png')}
+  source={require('./img/statue.png')}
   style={styles.icon4}
   /> 
                 </View>   

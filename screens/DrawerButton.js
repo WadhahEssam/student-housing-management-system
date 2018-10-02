@@ -13,7 +13,7 @@ style={styles.wrapper}
 onPress={()=> navigation.openDrawer()}
 > 
 <Image
-source={require('./draw.png')}
+source={require('./img/draw.png')}
 style={styles.icon}
 />
 

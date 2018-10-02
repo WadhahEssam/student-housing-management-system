@@ -39,7 +39,7 @@ static navigationOptions = {
   drawerLaber: 'Logout',
   drawerIcon:()=>(
     <Image
-source={require('./out.png')}
+source={require('./img/out.png')}
 style={styles.icon}
 />
   )

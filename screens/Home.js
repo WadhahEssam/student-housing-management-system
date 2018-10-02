@@ -42,7 +42,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
      drawerLaber: 'Logout',
      drawerIcon:()=>(
        <Image
-   source={require('./home.png')}
+   source={require('./img/home.png')}
    style={styles.icon}
    />
     )
@@ -69,7 +69,7 @@ return(
                 <View >
  
                 <Image
-  source={require('./add.png')}
+  source={require('./img/add.png')}
   style={styles.icon}
   /> 
                   
@@ -100,7 +100,7 @@ return(
  
                   
                 <Image
-  source={require('./room.png')}
+  source={require('./img/room.png')}
   style={styles.icon2}
   /> 
                 </View>   

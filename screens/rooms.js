@@ -63,7 +63,7 @@ return(
                 <View >
  
                 <Image
-  source={require('./take.png')}
+  source={require('./img/take.png')}
   style={styles.icon}
   /> 
                   
@@ -96,7 +96,7 @@ return(
  
                   
                 <Image
-  source={require('./change.png')}
+  source={require('./img/change.png')}
   style={styles.icon2}
   /> 
                 </View>   
