@@ -4,13 +4,13 @@ import {
   Text,
   View,
 } from 'react-native';
- import AppNavigator  from './screens/stacknav'
-import Home from "./screens/Home";
-import maintain from "./screens/maintain";
-import addcomplaints from "./screens/addcomplaints";
-// import logout from './screens/logout'; 
-// import HomeScreen from "./screens/HomeScreen";
-//import drawer from "./screens/drawer";
+ import AppNavigator  from './src/stacknav'
+import Home from "./src/Home";
+import maintain from "./src/maintain";
+import addcomplaints from "./src/addcomplaints";
+// import logout from './src/logout'; 
+// import HomeScreen from "./src/HomeScreen";
+//import drawer from "./src/drawer";
 
 export default class App extends React.Component {
   render() {

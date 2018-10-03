@@ -33,7 +33,7 @@ import {
 import { createStackNavigator } from 'react-navigation';
 
 import drawernav from './drawer';
-import complaints from './complaints';
+import complaints from './ComplaintsScreen';
 import DrawerButton from './DrawerButton';
 import maintain from "./maintain";
 import rooms from './rooms.js';
@@ -82,7 +82,7 @@ const AppNavigator = createStackNavigator({
   }
 }, 
   // only for testing
-  {initialRouteName: 'Home'}
+  {initialRouteName: 'LoginScreen'}
 );
  
 export default AppNavigator;
