@@ -15,7 +15,6 @@ import addcomplaints from "./screens/addcomplaints";
 export default class App extends React.Component {
   render() {
     return (
-      // this will add a prop navigate to all the components 
       <AppNavigator />
     );
   }
