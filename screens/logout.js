@@ -1,20 +1,9 @@
 import React, { Component } from "react";
 import {
-  AppRegistry,
   Text,
-  asyncStorageKey,
-  View,
-  TextInput,
-  Alert,
-  TouchableOpacity,
   StyleSheet,
   Image,
-  KeyboardAvoidingView,
-  ScrollView
 } from 'react-native';
- 
-
-import {createStackNavigator} from 'react-navigation';
 
 import {
   Label,
@@ -34,29 +23,23 @@ import {
   CardItem,
 } from 'native-base';
 
-export default class IS extends React.Component {
-static navigationOptions = {
-  drawerLaber: 'Logout',
-  drawerIcon:()=>(
-    <Image
-source={require('./img/out.png')}
-style={styles.icon}
-/>
-  )
-}
-
+export default class IS extends Component {
+  static navigationOptions = {
+    drawerLaber: 'Logout',
+    drawerIcon: () => (
+      <Image
+        source={require('./img/out.png')}
+        style={styles.icon}
+      />
+    )
+  };
 
   render(){
-return(
-
-  <Text>logout successfully</Text>
-
-)
-
-
-
-} }
-
+    return(
+      <Text>logout successfully</Text>
+    )
+  }
+}
  
 const styles = StyleSheet.create({
   wrapper:{
@@ -66,6 +49,4 @@ const styles = StyleSheet.create({
       width:24,
       height:24
   }
-  
-  
-  });
+});

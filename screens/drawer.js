@@ -13,8 +13,6 @@ import {
   ScrollView,
   Picker
 } from 'react-native';
- 
-
 
 import {
   Label,
@@ -38,13 +36,9 @@ import {
 import { createDrawerNavigator, createStackNavigator, DrawerItems, SafeAreaView } from 'react-navigation'
  
 import logout from './logout';
- 
 import Home from "./Home";
  
-
- 
 const drawernav = createDrawerNavigator({
-
   // For each screen that you can navigate to, create a new entry like this:
   Home: {
     screen: Home ,
@@ -52,12 +46,9 @@ const drawernav = createDrawerNavigator({
   Logout: {
     screen: logout
   }
-},
- 
-);
+});
 
-
- export default drawernav;
+export default drawernav;
 
 // initialRouteName: 'Home',
 // drawerPosition: 'left',
