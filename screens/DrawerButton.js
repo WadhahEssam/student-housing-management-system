@@ -6,33 +6,27 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
- 
+
 const DrawerButton = ({navigation})=>(
-<TouchableOpacity
-style={styles.wrapper}
-onPress={()=> navigation.openDrawer()}
-> 
-<Image
-source={require('./img/draw.png')}
-style={styles.icon}
-/>
-
-
-</TouchableOpacity>
-
-
-
+    <TouchableOpacity
+        style={styles.wrapper}
+        onPress={()=> navigation.openDrawer()}
+    > 
+        <Image
+            source={require('./img/draw.png')}
+            style={styles.icon}
+        />
+    </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
-wrapper:{
-    marginLeft:10
-},
-icon:{
-    width:24,
-    height:24
-}
-
-
+    wrapper:{
+        marginLeft:10
+    },
+    icon:{
+        width:24,
+        height:24
+    }
 });
+
 export default DrawerButton;
