@@ -13,9 +13,6 @@ import {
   ScrollView,
   Picker
 } from 'react-native';
- 
- 
-
 import {
   Label,
   Left,
@@ -43,56 +40,49 @@ import rooms from './rooms.js';
 import LoginScreen from './LoginScreen'; 
 import addcomplaints from "./addcomplaints";
 import change from './change'
-   
 
 const AppNavigator = createStackNavigator({
-LoginScreen:{
-screen:LoginScreen,
-navigationOptions: {
-  headerVisible: false,
-  header: null
-}
-},
+  LoginScreen:{
+    screen:LoginScreen,
+    navigationOptions: {
+      headerVisible: false,
+      header: null
+    }
+  },
   Home:{
     screen: drawernav, 
     navigationOptions:({navigation})=>({
-     title:'Home',
-     headerLeft:<DrawerButton navigation={navigation} />
-  
-  
+      title:'Home',
+      headerLeft:<DrawerButton navigation={navigation} />
     })
   },
   rooms:{
-screen:rooms
-
+    screen:rooms
   },
   complaints:{
     screen:complaints,
     navigationOptions:{
       title:'Complaints'
     }
-    
-    
-
   },
- maintain:{
-    screen: maintain,
-     
+  maintain:{
+      screen: maintain,
   },
- addcomplaints:{
-  screen: addcomplaints, 
- }, 
- change:{
-   screen:change,
-   
- },
- rooms:{
-   screen:rooms,
-   navigationOptions:{
-    title:'Rooms'
+  addcomplaints:{
+    screen: addcomplaints, 
+  }, 
+  change:{
+    screen:change,
+  },
+  rooms:{
+    screen:rooms,
+    navigationOptions:{
+      title:'Rooms'
+    }
   }
- }
- 
-});
+}, 
+  // only for testing
+  {initialRouteName: 'Home'}
+);
  
 export default AppNavigator;

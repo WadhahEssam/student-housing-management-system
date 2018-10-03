@@ -37,7 +37,6 @@ const config = {
 };
 firebase.initializeApp(config);
 
-
 export default class Login extends Component {
   state = {
     email: '',
