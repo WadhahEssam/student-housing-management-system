@@ -75,33 +75,43 @@ export default class Login extends Component {
               />
             </View>
             <ScrollView>
-              <View style={styles.textinput}>
+              <View style={styles.formView}>
                 <Form>
                   <Item floatingLabel>
-                    <Label style={{color:'#dedbdc'}}> KSU Student Email </Label>
+                    <Label style={{color:'#dedbdc'}}> KSU Email </Label>
                     <Input 
                       autoCorrect={false}
                       style={styles.textinput}
                       autoCapitalize="none"
                       onChangeText={(email) => this.setState({ email })}
+                      keyboardType="email-address"
+                      placeholderTextColor="white"
+                      selectionColor="white"
                     />
                   </Item >
                   <Item floatingLabel>
                     <Label style={{color:'#dedbdc'}}> Password </Label>
-                    <Input autoCorrect={false} secureTextEntry={true}
+                    <Input 
+                      autoCorrect={false} 
+                      secureTextEntry={true}
                       style={styles.textinput}
                       autoCapitalize="none"
                       onChangeText={(password) => this.setState({ password })}
+                      placeholderTextColor="white"
+                      selectionColor="white"
                     />
                   </Item>
-                  <Button style={{ marginTop: 10 }}
-                    full
-                    rounded
-                    info
-                    onPress={() => this.login(this.state.email, this.state.password)}
-                  >
-                    <Text style={{ color: 'white', fontWeight:'bold' }}>Login</Text>
-                  </Button>
+                  <View style={styles.loginButtonView}>
+                    <Button 
+                      style={styles.loginButton}
+                      full
+                      block
+                      info
+                      onPress={() => this.login(this.state.email, this.state.password)}
+                    >
+                      <Text style={{ color: 'white', fontWeight:'bold' }}>Login</Text>
+                    </Button>
+                  </View>
                 </Form>
               </View>
             </ScrollView>
@@ -120,22 +130,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'  
   },
   textinput: { 
+    height: 60,
+    color: 'white',
+  },
+  formView: {
     flex:1,
     justifyContent: 'center',
+    padding: 30,
+    position: 'relative',
+    right: 10,
+    bottom: 40,
   },
   img: {
     flex:1,
     marginTop:20,
     width: 240,
     height: 15, 
-   },
-   cent:{
+  },
+  cent:{
     flex:1,
     justifyContent: 'center', 
     alignItems:'center',
     alignContent: 'center',
-    borderBottomColor: '#E6E6E6',
-    borderBottomWidth: 2, 
-   }
+  },
+  loginButton: {
+    flex: 1,
+    marginTop: 15,
+    borderRadius: 3,
+    opacity: 0.9,
+    borderColor: 'white',
+    backgroundColor: '#396388',
+  },
+  loginButtonView: {
+    flex: 1,
+    padding: 20
+  }
 });
  
