@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import axios from 'axios';
+import qs from 'querystring';
+import { env } from '../env';
+
 import {
   AppRegistry,
   Text,
@@ -23,38 +27,35 @@ import {
   Header,
   Content
 } from 'native-base';
-import * as firebase from 'firebase';
-<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-
-// Initialize Firebase
-const config = {
-  apiKey: "AIzaSyCfyg6_PWs-0zqMz5VA1ATJ4zmP4p2bt3U",
-  authDomain: "login-chatguid.firebaseapp.com",
-  databaseURL: "https://login-chatguid.firebaseio.com",
-  projectId: "login-chatguid",
-  storageBucket: "login-chatguid.appspot.com",
-  messagingSenderId: "989571864187"
-};
-firebase.initializeApp(config);
 
 export default class Login extends Component {
   state = {
     email: '',
     password: '',
-    error: '',
+    error: null,
     loading: false,
   }
 
   login(email, password) {
-    var that = this;
-    try {
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
-        console.log(user)
-       that.props.navigation.navigate('Home')
-      })
-    } catch(error) {
-      console.log(error.toString())
-    }
+    this.setState({error: null});
+    axios.post(`${env.url}/login`, qs.stringify({email, password}))
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+      this.setState({error: 'Wrong Credentials'});
+    });
+  }
+
+  renderError = () => {
+    return (
+      <View style={styles.errorView}>
+        <Text style={styles.errorText}>
+          {this.state.error}
+        </Text>
+      </View>
+    );
   }
 
   render() {
@@ -112,6 +113,7 @@ export default class Login extends Component {
                       <Text style={{ color: 'white', fontWeight:'bold' }}>Login</Text>
                     </Button>
                   </View>
+                  {!(this.state.error) ? <View></View> : this.renderError()}
                 </Form>
               </View>
             </ScrollView>
@@ -164,6 +166,17 @@ const styles = StyleSheet.create({
   loginButtonView: {
     flex: 1,
     padding: 20
+  }, 
+  errorView: {
+    backgroundColor: '#DC1A2A',
+    height: 40, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    opacity: 0.8,
+    borderRadius: 3,
+  },
+  errorText: {
+    color: 'white',
   }
 });
  

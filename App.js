@@ -12,7 +12,7 @@ import addcomplaints from "./src/addcomplaints";
 // import HomeScreen from "./src/HomeScreen";
 //import drawer from "./src/drawer";
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <AppNavigator />

@@ -9,9 +9,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "expo": "^29.0.0",
     "firebase": "^5.4.2",
+    "jquery": "^3.3.1",
     "native-base": "^2.8.0",
+    "querystring": "^0.2.0",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
     "react-navigation": "^2.6.2"
