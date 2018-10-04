@@ -82,7 +82,7 @@ const AppNavigator = createStackNavigator({
   }
 }, 
   // only for testing
-  {initialRouteName: 'LoginScreen'}
+  {initialRouteName: 'Home'}
 );
  
 export default AppNavigator;

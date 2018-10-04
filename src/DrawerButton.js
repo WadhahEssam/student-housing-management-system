@@ -10,7 +10,7 @@ import {
 const DrawerButton = ({navigation})=>(
     <TouchableOpacity
         style={styles.wrapper}
-        onPress={()=> navigation.openDrawer()}
+        onPress={()=> navigation.toggleDrawer()}
     > 
         <Image
             source={require('./img/draw.png')}
