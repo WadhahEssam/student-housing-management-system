@@ -4,18 +4,15 @@ import qs from 'querystring';
 import { env } from '../env';
 
 import {
-  AppRegistry,
   Text,
   asyncStorageKey,
   View,
-  TextInput,
-  Alert,
-  TouchableOpacity,
   StyleSheet,
   Image,
   ImageBackground,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
+  AsyncStorage
 } from 'react-native';
 import {
   Label,
@@ -39,8 +36,9 @@ export default class Login extends Component {
   login(email, password) {
     this.setState({error: null});
     axios.post(`${env.url}/login`, qs.stringify({email, password}))
-    .then(response => {
-      console.log(response.data);
+    .then(async (response) => {
+      console.log(response.data.access_token);
+      await AsyncStorage.setItem('token', response.data.access_token);
       this.props.navigation.navigate('Home');
     })
     .catch(error => {
@@ -57,6 +55,16 @@ export default class Login extends Component {
         </Text>
       </View>
     );
+  }
+
+  async componentWillMount() {
+    const token = await AsyncStorage.getItem('token');
+    if(!token) {
+      console.log('user is not logged in');
+    } else {
+      console.log('user is logged in with token '+ token);
+      this.props.navigation.navigate('Home');
+    }
   }
 
   render() {

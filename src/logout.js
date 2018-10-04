@@ -3,25 +3,8 @@ import {
   Text,
   StyleSheet,
   Image,
+  AsyncStorage,
 } from 'react-native';
-
-import {
-  Label,
-  Left,
-  Right,
-  Icon,
-  List,
-  ListItem,
-  Button,
-  Form,
-  Container,
-  Item,
-  Input,
-  Header,
-  Content,
-  Card,
-  CardItem,
-} from 'native-base';
 
 export default class IS extends Component {
   static navigationOptions = {
@@ -34,7 +17,8 @@ export default class IS extends Component {
     )
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    await AsyncStorage.removeItem('token');
     this.props.navigation.navigate('LoginScreen');
   }
 

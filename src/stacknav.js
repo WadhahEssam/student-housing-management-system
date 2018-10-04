@@ -1,35 +1,4 @@
 import React, { Component } from "react";
-import {
-  AppRegistry,
-  Text,
-  asyncStorageKey,
-  View,
-  TextInput,
-  Alert,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-  KeyboardAvoidingView,
-  ScrollView,
-  Picker
-} from 'react-native';
-import {
-  Label,
-  Left,
-  Right,
-  Icon,
-  List,
-  ListItem,
-  Button,
-  Form,
-  Container,
-  Item,
-  Input,
-  Header,
-  Content,
-  Card,
-  CardItem,
-} from 'native-base';
 import { createStackNavigator } from 'react-navigation';
 
 import drawernav from './drawer';
@@ -82,7 +51,7 @@ const AppNavigator = createStackNavigator({
   }
 }, 
   // only for testing
-  {initialRouteName: 'Home'}
+  {initialRouteName: 'LoginScreen'}
 );
  
 export default AppNavigator;
