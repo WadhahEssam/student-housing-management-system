@@ -34,6 +34,10 @@ export default class IS extends Component {
     )
   };
 
+  componentDidMount() {
+    this.props.navigation.navigate('LoginScreen');
+  }
+
   render(){
     return(
       <Text>logout successfully</Text>

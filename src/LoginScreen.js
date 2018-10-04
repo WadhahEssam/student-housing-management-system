@@ -41,6 +41,7 @@ export default class Login extends Component {
     axios.post(`${env.url}/login`, qs.stringify({email, password}))
     .then(response => {
       console.log(response.data);
+      this.props.navigation.navigate('Home');
     })
     .catch(error => {
       console.log(error);
