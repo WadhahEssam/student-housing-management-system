@@ -23,20 +23,7 @@ export default class home extends Component {
   };
 
   async componentDidMount() {
-      // try {
-      //   await AsyncStorage.setItem('password', '11223333333');
-      // } catch(error) {
-      //   console.log(error);
-      // }
-
-      // try {
-      //   const password = await AsyncStorage.getItem('password');
-      //   if(password != null) {
-      //     console.log(password);
-      //   }
-      // } catch(error) {
-      //   console.log(error);
-      // }
+    
   }
 
   render(){
