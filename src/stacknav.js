@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, } from "react";
 import { createStackNavigator } from 'react-navigation';
 
 import drawernav from './drawer';
@@ -8,16 +8,31 @@ import maintain from "./maintain";
 import rooms from './rooms.js';
 import LoginScreen from './LoginScreen'; 
 import addcomplaints from "./addcomplaints";
-import change from './change'
+import change from './change';
+import maintainScreen from './maintainScreen';
+import reserveRoom from './reserveRoom';
+import Splash from './splash'
+
 
 const AppNavigator = createStackNavigator({
-  LoginScreen:{
-    screen:LoginScreen,
-    navigationOptions: {
-      headerVisible: false,
-      header: null
-    }
-  },
+  // Splash:{
+  //   screen:Splash,
+  //   navigationOptions: {
+  //     headerVisible: false,
+  //     header: null,
+  //     gesturesEnabled: false,
+  //     swipeEnabled: false
+
+  //   }
+  // },
+  // LoginScreen:{
+  //   screen:LoginScreen,
+  //   navigationOptions: {
+  //     headerVisible: false,
+      
+  //     header: null
+  //   }
+  // },
   Home:{
     screen: drawernav, 
     navigationOptions:({navigation})=>({
@@ -34,6 +49,12 @@ const AppNavigator = createStackNavigator({
       title:'Complaints'
     }
   },
+  maintainScreen:{
+    screen:maintainScreen,
+    navigationOptions:{
+      title:'Maintainence'
+    }
+  },
   maintain:{
       screen: maintain,
   },
@@ -48,10 +69,16 @@ const AppNavigator = createStackNavigator({
     navigationOptions:{
       title:'Rooms'
     }
+  },
+  reserveRoom:{
+    screen:reserveRoom,
+    navigationOptions:{
+      title:'Reserve Room'
+    }
   }
 }, 
   // only for testing
-  {initialRouteName: 'LoginScreen'}
+  // {initialRouteName: 'LoginScreen'}
 );
  
 export default AppNavigator;
