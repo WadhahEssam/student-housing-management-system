@@ -25,14 +25,14 @@ const AppNavigator = createStackNavigator({
 
   //   }
   // },
-  // LoginScreen:{
-  //   screen:LoginScreen,
-  //   navigationOptions: {
-  //     headerVisible: false,
+  LoginScreen:{
+    screen:LoginScreen,
+    navigationOptions: {
+      headerVisible: false,
       
-  //     header: null
-  //   }
-  // },
+      header: null
+    }
+  },
   Home:{
     screen: drawernav, 
     navigationOptions:({navigation})=>({

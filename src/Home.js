@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import axios from 'axios';
+import qs from 'querystring';
+import { env } from '../env';
 import {
   Text,
   View,
@@ -12,6 +15,11 @@ import {
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class home extends Component {
+  state = {
+    student: '',
+    token: null,
+    room: null,
+  }
   static navigationOptions = {
     drawerLaber: 'Logout',
     drawerIcon: () => (
@@ -23,7 +31,12 @@ export default class home extends Component {
   };
 
   async componentDidMount() {
+    const token = await AsyncStorage.getItem('token');
+    const student = await axios.post(`${env.url}/getInfo`, qs.stringify({ token }));
+    const room = await axios.post(`${env.url}/getStudentRoom`, qs.stringify({ token }));
 
+    this.setState({ token, student: student.data, room: room.data });
+    console.log(this.state);
   }
 
   render() {
@@ -32,20 +45,46 @@ export default class home extends Component {
         <Grid>
           <Row
             style={{ backgroundColor: '#6CBACB', borderWidth: 1, borderColor: 'white', }}
-
           >
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
               <View>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Student Name</Text>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>
-                  _____________________________
-                </Text>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Building Number</Text>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Room</Text>
+                <Image
+                  source={require('./img/student.png')}
+                  style={{ width: 45, height: 45, marginBottom: 10 }}
+                />
               </View>
-
+              <View>
+                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>{this.state.student.name}</Text>
+              </View>
+              <View>
+                <Text style={{ fontSize: 13, color: 'white', textAlign: 'center', marginTop: 3}}>{this.state.student.email}</Text>
+              </View>
             </View>
           </Row >
+          <Row
+            style={{ backgroundColor: '#FF5767', borderWidth: 1, borderColor: 'white', }}
+          >
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <Image
+                source={require('./img/building.png')}
+                style={{ width: 45, height: 45, marginBottom: 10 }}
+              />
+              <View>
+                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Room Information</Text>
+              </View>
+              { 
+                !(this.state.room) 
+              ? 
+                <View>
+                  <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Room Information</Text>
+                </View>
+              : 
+                <View>
+                  <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Room Information</Text>
+                </View>
+              }
+            </View>
+          </Row>
         </Grid>
         <Grid>
           <Row>
@@ -102,7 +141,6 @@ export default class home extends Component {
             </Col >
             <Col
               style={{ backgroundColor: '#858786', borderWidth: 1, borderColor: 'white', }}
-
             >
               <View style={{
                 flex: 1, justifyContent: 'center', alignItems: 'center',
