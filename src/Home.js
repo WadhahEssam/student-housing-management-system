@@ -49,10 +49,7 @@ export default class home extends Component {
     return(
       <View>
         <View>
-          <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>{this.state.student.name}</Text>
-        </View>
-        <View>
-          <Text style={{ fontSize: 13, color: 'white', textAlign: 'center', marginTop: 3}}>{this.state.student.email}</Text>
+          <Text style={{ fontSize: 22, color: 'white', textAlign: 'center' }}>{this.state.student.name}</Text>
         </View>
       </View>
     );
@@ -68,7 +65,7 @@ export default class home extends Component {
     // if student doesn't have a room
     else if (this.state.room === "") {
       return (
-        <View>
+        <View style={styles.noRoomInformationBox}>
           <Text style={{ fontSize: 15, color: 'white', textAlign: 'center' }}>You Don't Have Room</Text>
         </View> 
       );
@@ -77,54 +74,50 @@ export default class home extends Component {
     else {
       return (
         <View>
-          <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>You have a room</Text>
-        </View> 
+          <View style={styles.roomInformationBox}>
+            <View style={styles.roomInformationItemBox}>
+              <Text style={styles.roomInformationItemText}>
+              Building : {this.state.room.building}
+              </Text>
+            </View>
+            
+            <View style={styles.roomInformationItemBox}>
+              <Text style={styles.roomInformationItemText}>
+              Floor : {this.state.room.floor}
+              </Text>
+            </View>
+
+            <View style={styles.roomInformationItemBox}>
+              <Text style={styles.roomInformationItemText}>
+              Wing : {this.state.room.wing}
+              </Text>
+            </View>
+
+            <View style={styles.roomInformationItemBox}>
+              <Text style={styles.roomInformationItemText}>
+              Room : {this.state.room.room_number}
+              </Text>
+            </View>
+          </View> 
+        </View>
       );
     }
   }
 
   renderButtons = () => {
-    return(
-        <Grid>
+    if (this.state.room === "loading") {
+      return (
+        <View/>
+      );
+    }
+    // if student doesn't have a room
+    else if (this.state.room === "") {
+      return(
+        <Grid style={{padding: 7}}>
           <Row>
             <Col
-              style={{ backgroundColor: '#BB73A3', borderWidth: 1, borderColor: 'white', }}
-              onPress={() => this.props.navigation.navigate('complaints')}
-            >
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: 10, }}>
-                <View>
-                  <Text style={{ fontSize: 20, color: 'white', }}> Complaints</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('./img/add.png')}
-                    style={{ width: 40, height: 40, marginTop: 10 }}
-                  />
-                </View>
-              </View>
-            </Col >
-            <Col
-              style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-              onPress={() => this.props.navigation.navigate('maintainScreen')}
-            >
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <View>
-                  <Text style={{ fontSize: 20, color: 'white', }}> Maintenance</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('./img/maintain.png')}
-                    style={{ width: 45, height: 45, marginTop: 10 }}
-                  />
-                </View>
-              </View>
-            </Col >
-          </Row>
-          <Row>
-            <Col
-
               style={{ backgroundColor: '#CAB7A2', borderWidth: 1, borderColor: 'white', }}
-              onPress={() => this.props.navigation.navigate('rooms')}
+              onPress={() => this.props.navigation.navigate('reserveRoom')}
             >
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <View>
@@ -146,11 +139,11 @@ export default class home extends Component {
                 marginBottom: 10,
               }}>
                 <View>
-                  <Text style={{ fontSize: 20, color: 'white', }}> Leave Room</Text>
+                  <Text style={{ fontSize: 20, color: 'white', }}> Logout</Text>
                 </View>
                 <View>
                   <Image
-                    source={require('./img/leave.png')}
+                    source={require('./img/logout.png')}
                     style={{ width: 40, height: 40, marginTop: 30, }}
                   />
                 </View>
@@ -158,15 +151,94 @@ export default class home extends Component {
             </Col >
           </Row>
         </Grid>
-    );
+      );
+    } 
+    // if student has a room 
+    else {
+      return(
+          <Grid style={{padding: 7}}>
+            <Row>
+              <Col
+                style={{ backgroundColor: '#BB73A3', borderWidth: 1, borderColor: 'white', }}
+                onPress={() => this.props.navigation.navigate('complaints')}
+              >
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: 10, }}>
+                  <View>
+                    <Text style={{ fontSize: 20, color: 'white', }}> Complaints</Text>
+                  </View>
+                  <View>
+                    <Image
+                      source={require('./img/add.png')}
+                      style={{ width: 40, height: 40, marginTop: 10 }}
+                    />
+                  </View>
+                </View>
+              </Col >
+              <Col
+                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
+                onPress={() => this.props.navigation.navigate('maintainScreen')}
+              >
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                  <View>
+                    <Text style={{ fontSize: 20, color: 'white', }}> Maintenance</Text>
+                  </View>
+                  <View>
+                    <Image
+                      source={require('./img/maintain.png')}
+                      style={{ width: 45, height: 45, marginTop: 10 }}
+                    />
+                  </View>
+                </View>
+              </Col >
+            </Row>
+            <Row>
+              <Col
+
+                style={{ backgroundColor: '#CAB7A2', borderWidth: 1, borderColor: 'white', }}
+                onPress={() => this.props.navigation.navigate('reserveRoom')}
+              >
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                  <View>
+                    <Text style={{ fontSize: 20, color: 'white', }}>Reserve Room</Text>
+                  </View>
+                  <View>
+                    <Image
+                      source={require('./img/room.png')}
+                      style={{ width: 80, height: 80 }}
+                    />
+                  </View>
+                </View>
+              </Col >
+              <Col
+                style={{ backgroundColor: '#858786', borderWidth: 1, borderColor: 'white', }}
+              >
+                <View style={{
+                  flex: 1, justifyContent: 'center', alignItems: 'center',
+                  marginBottom: 10,
+                }}>
+                  <View>
+                    <Text style={{ fontSize: 20, color: 'white', }}>Leave Room</Text>
+                  </View>
+                  <View>
+                    <Image
+                      source={require('./img/leave.png')}
+                      style={{ width: 40, height: 40, marginTop: 30, }}
+                    />
+                  </View>
+                </View>
+              </Col >
+            </Row>
+          </Grid>
+      );
+    }
   }
 
   render() {
     return (
       <Container>
-        <Grid>
+        <Grid style={{padding: 7}}>
           <Row
-            style={{ backgroundColor: '#6CBACB', borderWidth: 1, borderColor: 'white', }}
+          style={{ backgroundColor: '#6CBACB', borderWidth: 1, borderColor: 'white' }}
           >
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
               <View>
@@ -179,12 +251,12 @@ export default class home extends Component {
             </View>
           </Row >
           <Row
-            style={{ backgroundColor: '#FF5767', borderWidth: 1, borderColor: 'white', }}
+          style={{ backgroundColor: '#FF5767', borderWidth: 1, borderColor: 'white' }}
           >
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
               <Image
                 source={require('./img/building.png')}
-                style={{ width: 45, height: 45, marginBottom: 10 }}
+                style={{ width: 45, height: 45, marginBottom: 15 }}
               />
               {this.renderRoomInformation()}
             </View>
@@ -205,171 +277,31 @@ const styles = StyleSheet.create({
   icon2: {
     width: 100,
     height: 100,
+  }, 
+  roomInformationBox: {
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 3,
+    flexDirection: 'row',
+  },
+  roomInformationItemBox: {
+    height: '100%',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRightWidth: 1,
+    borderColor: 'white',
+    backgroundColor: '#E76C7C',
+  },
+  noRoomInformationBox: {
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 3,
+    flexDirection: 'row',
+    paddingVertical: 15,
+    paddingHorizontal: 20
+  },
+  roomInformationItemText: {
+    color: 'white'
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { Component } from "react";
-// import {
-//   AppRegistry,
-//   Text,
-//   asyncStorageKey,
-//   View,
-//   TextInput,
-//   Alert,
-//   TouchableOpacity,
-//   StyleSheet,
-//   Image,
-//   KeyboardAvoidingView,
-//   ScrollView,
-//   Picker
-// } from 'react-native';
-
-
-
-// import {
-//   Label,
-//   Drawer,
-//   Left,
-//   Right,
-//   Icon,
-//   List,
-//   ListItem,
-//   Button,
-//   Form,
-//   Container,
-//   Item,
-//   Input,
-//   Header,
-//   Content,
-//   Card,
-//   CardItem,
-// } from 'native-base';
-
-
-// export default class home extends React.Component {
-//   static navigationOptions = {
-//     drawerLaber: 'Logout',
-//     drawerIcon:()=>(
-//       <Image
-//   source={require('./home.png')}
-//   style={styles.icon}
-//   />
-//     )
-//   }
-
-
-
-//   render(){
-
-// return(
-//   <Container>
-
-//          <Content>
-//           <Card> 
-//             <CardItem>
-//               <Icon active name="home" />
-//               <Text style={{color:'gray' , fontSize:18  , fontWeight:"bold"}}>Student Housing</Text>
-
-//              </CardItem>
-//              <CardItem>
-//               <Icon active name="create" />
-//               <Text>Add Complaints.</Text>
-//               <Right>
-//                 <Icon name="arrow-forward"
-//                 onPress={() => this.props.navigation.navigate('complaints')}>
-
-//                 </Icon>
-//               </Right>
-//              </CardItem>
-
-
-//              <CardItem>
-//               <Icon active name="hammer" />
-//               <Text>Maintenance Request.</Text>
-//               <Right>
-//                 <Icon style={{marginRight:6}}   name="arrow-forward"  
-//                 onPress={() => this.props.navigation.navigate('maintain')}>
-//                 </Icon>
-//               </Right>
-//              </CardItem>
-
-
-//               <CardItem>
-//               <Icon active name="git-pull-request" />
-//               <Text  >Change Room.</Text>
-//               <Right>
-
-//                 <Icon 
-//                  onPress={() => this.props.navigation.navigate('change')} name="arrow-forward"   >
-//                 </Icon>
-
-//               </Right>
-//              </CardItem>
-
-
-//            </Card>
-//         </Content>
-
-
-
-
-
-//       </Container>
-
-// )
-
-
-
-// } }
-
-// const styles = StyleSheet.create({
-//   icon: {
-//     width: 24,
-//     height: 24,
-//   },
-// });
