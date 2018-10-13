@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
  import AppNavigator  from './src/stacknav'
-import Splash from "./src/splash";
+import Home from "./src/Home";
 import maintain from "./src/maintain";
 import addcomplaints from "./src/addcomplaints";
 // import logout from './src/logout'; 
@@ -15,8 +15,6 @@ import addcomplaints from "./src/addcomplaints";
 export default class App extends Component {
   render() {
     return (
-      
-      
       <AppNavigator />
     );
   }

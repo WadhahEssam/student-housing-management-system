@@ -12,8 +12,7 @@ import {
   ImageBackground,
   KeyboardAvoidingView,
   ScrollView,
-  AsyncStorage,
-  BackHandler
+  AsyncStorage
 } from 'react-native';
 import {
   Label,
@@ -67,18 +66,6 @@ export default class Login extends Component {
       this.props.navigation.navigate('Home');
     }
   }
-
-  // componentDidMount() {
-  //   BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
-  // }
-  
-  // componentWillUnmount() {
-  //   BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
-  // }
-  
-  // handleBackButton() {
-  //   return true;
-  // }
 
   render() {
     return (

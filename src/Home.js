@@ -23,103 +23,45 @@ export default class home extends Component {
   };
 
   async componentDidMount() {
-
+    
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <Container>
         <Grid>
-          <Row
-            style={{ backgroundColor: '#6CBACB', borderWidth: 1, borderColor: 'white', }}
-
+          <Row 
+            style={{ backgroundColor: '#0B3861', borderWidth:3, borderColor:'white',}}
+            onPress={() => this.props.navigation.navigate('complaints')}
           >
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <View>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Student Name</Text>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>
-                  _____________________________
-                </Text>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Building Number</Text>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Room</Text>
+            <View style={{ flex:1, justifyContent:'center', alignItems:'center'}}>
+              <View> 
+                <Text style={{fontSize:40, color:'white',}}>Complaints</Text>  
               </View>
-
+              <View >
+                <Image
+                  source={require('./img/add.png')}
+                  style={styles.icon}
+                /> 
+              </View>   
             </View>
-          </Row >
-        </Grid>
-        <Grid>
-          <Row>
-            <Col
-              style={{ backgroundColor: '#BB73A3', borderWidth: 1, borderColor: 'white', }}
-              onPress={() => this.props.navigation.navigate('complaints')}
-            >
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: 10, }}>
-                <View>
-                  <Text style={{ fontSize: 20, color: 'white', }}> Complaints</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('./img/add.png')}
-                    style={{ width: 40, height: 40, marginTop: 10 }}
-                  />
-                </View>
+          </Row > 
+          <Row 
+            style={{ backgroundColor: '#FF8000', borderWidth:3, borderColor:'white',}}
+            onPress={() => this.props.navigation.navigate('rooms')}
+          >
+            <View style={{ flex:1, justifyContent:'center', alignItems:'center'}}>
+              <View> 
+                <Text style={{fontSize:40, color:'white',}}> Rooms</Text>  
               </View>
-            </Col >
-            <Col
-              style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-              onPress={() => this.props.navigation.navigate('maintainScreen')}
-            >
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <View>
-                  <Text style={{ fontSize: 20, color: 'white', }}> Maintenance</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('./img/maintain.png')}
-                    style={{ width: 45, height: 45, marginTop: 10 }}
-                  />
-                </View>
-              </View>
-            </Col >
-          </Row>
-          <Row>
-            <Col
-
-              style={{ backgroundColor: '#CAB7A2', borderWidth: 1, borderColor: 'white', }}
-              onPress={() => this.props.navigation.navigate('rooms')}
-            >
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <View>
-                  <Text style={{ fontSize: 20, color: 'white', }}> Reserve Room</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('./img/room.png')}
-                    style={{ width: 80, height: 80 }}
-                  />
-                </View>
-              </View>
-            </Col >
-            <Col
-              style={{ backgroundColor: '#858786', borderWidth: 1, borderColor: 'white', }}
-
-            >
-              <View style={{
-                flex: 1, justifyContent: 'center', alignItems: 'center',
-                marginBottom: 10,
-              }}>
-                <View>
-                  <Text style={{ fontSize: 20, color: 'white', }}> Leave Room</Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('./img/leave.png')}
-                    style={{ width: 40, height: 40, marginTop: 30, }}
-                  />
-                </View>
-              </View>
-            </Col >
-          </Row>
+              <View>
+                <Image
+                  source={require('./img/room.png')}
+                  style={styles.icon2}
+                /> 
+              </View>   
+            </View>
+          </Row > 
         </Grid>
       </Container>
     )
@@ -128,15 +70,15 @@ export default class home extends Component {
 
 const styles = StyleSheet.create({
   icon: {
-    marginTop: 5,
-    width: 32,
-    height: 32,
+    marginTop:20,
+    width: 44,
+    height: 44,
   },
   icon2: {
     width: 100,
     height: 100,
   }
-});
+}); 
 
 
 
@@ -198,8 +140,8 @@ const styles = StyleSheet.create({
 //   ScrollView,
 //   Picker
 // } from 'react-native';
-
-
+ 
+ 
 
 // import {
 //   Label,
@@ -219,7 +161,7 @@ const styles = StyleSheet.create({
 //   Card,
 //   CardItem,
 // } from 'native-base';
-
+ 
 
 // export default class home extends React.Component {
 //   static navigationOptions = {
@@ -235,16 +177,16 @@ const styles = StyleSheet.create({
 
 
 //   render(){
-
+    
 // return(
 //   <Container>
-
+ 
 //          <Content>
 //           <Card> 
 //             <CardItem>
 //               <Icon active name="home" />
 //               <Text style={{color:'gray' , fontSize:18  , fontWeight:"bold"}}>Student Housing</Text>
-
+              
 //              </CardItem>
 //              <CardItem>
 //               <Icon active name="create" />
@@ -252,7 +194,7 @@ const styles = StyleSheet.create({
 //               <Right>
 //                 <Icon name="arrow-forward"
 //                 onPress={() => this.props.navigation.navigate('complaints')}>
-
+                
 //                 </Icon>
 //               </Right>
 //              </CardItem>
@@ -273,11 +215,11 @@ const styles = StyleSheet.create({
 //               <Icon active name="git-pull-request" />
 //               <Text  >Change Room.</Text>
 //               <Right>
-
+               
 //                 <Icon 
 //                  onPress={() => this.props.navigation.navigate('change')} name="arrow-forward"   >
 //                 </Icon>
-
+               
 //               </Right>
 //              </CardItem>
 
@@ -288,7 +230,7 @@ const styles = StyleSheet.create({
 
 
 
-
+         
 //       </Container>
 
 // )
