@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Image,
   AsyncStorage,
+  ActivityIndicator
 } from 'react-native';
 import {
   Container,
@@ -16,9 +17,9 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class home extends Component {
   state = {
-    student: '',
+    student: null,
     token: null,
-    room: null,
+    room: 'loading',
   }
   static navigationOptions = {
     drawerLaber: 'Logout',
@@ -39,53 +40,51 @@ export default class home extends Component {
     console.log(this.state);
   }
 
-  render() {
-    return (
-      <Container>
-        <Grid>
-          <Row
-            style={{ backgroundColor: '#6CBACB', borderWidth: 1, borderColor: 'white', }}
-          >
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <View>
-                <Image
-                  source={require('./img/student.png')}
-                  style={{ width: 45, height: 45, marginBottom: 10 }}
-                />
-              </View>
-              <View>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>{this.state.student.name}</Text>
-              </View>
-              <View>
-                <Text style={{ fontSize: 13, color: 'white', textAlign: 'center', marginTop: 3}}>{this.state.student.email}</Text>
-              </View>
-            </View>
-          </Row >
-          <Row
-            style={{ backgroundColor: '#FF5767', borderWidth: 1, borderColor: 'white', }}
-          >
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <Image
-                source={require('./img/building.png')}
-                style={{ width: 45, height: 45, marginBottom: 10 }}
-              />
-              <View>
-                <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Room Information</Text>
-              </View>
-              { 
-                !(this.state.room) 
-              ? 
-                <View>
-                  <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Room Information</Text>
-                </View>
-              : 
-                <View>
-                  <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Room Information</Text>
-                </View>
-              }
-            </View>
-          </Row>
-        </Grid>
+  renderStudentInformation = () => {
+    if (!this.state.student) {
+      return(
+        <ActivityIndicator color="white" style={{ marginTop: 20 }} />
+      );
+    } 
+    return(
+      <View>
+        <View>
+          <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>{this.state.student.name}</Text>
+        </View>
+        <View>
+          <Text style={{ fontSize: 13, color: 'white', textAlign: 'center', marginTop: 3}}>{this.state.student.email}</Text>
+        </View>
+      </View>
+    );
+  }
+
+  renderRoomInformation = () => {
+    // while data is fetching
+    if(this.state.room === 'loading') {
+      return (
+        <ActivityIndicator color="white" style={{ marginTop: 20 }} />
+      );
+    }
+    // if student doesn't have a room
+    else if (this.state.room === "") {
+      return (
+        <View>
+          <Text style={{ fontSize: 15, color: 'white', textAlign: 'center' }}>You Don't Have Room</Text>
+        </View> 
+      );
+    } 
+    // if student has a room
+    else {
+      return (
+        <View>
+          <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>You have a room</Text>
+        </View> 
+      );
+    }
+  }
+
+  renderButtons = () => {
+    return(
         <Grid>
           <Row>
             <Col
@@ -159,6 +158,39 @@ export default class home extends Component {
             </Col >
           </Row>
         </Grid>
+    );
+  }
+
+  render() {
+    return (
+      <Container>
+        <Grid>
+          <Row
+            style={{ backgroundColor: '#6CBACB', borderWidth: 1, borderColor: 'white', }}
+          >
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <View>
+                <Image
+                  source={require('./img/student.png')}
+                  style={{ width: 45, height: 45, marginBottom: 10 }}
+                />
+              </View>
+              {this.renderStudentInformation()}
+            </View>
+          </Row >
+          <Row
+            style={{ backgroundColor: '#FF5767', borderWidth: 1, borderColor: 'white', }}
+          >
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <Image
+                source={require('./img/building.png')}
+                style={{ width: 45, height: 45, marginBottom: 10 }}
+              />
+              {this.renderRoomInformation()}
+            </View>
+          </Row>
+        </Grid>
+        {this.renderButtons()}
       </Container>
     )
   }
