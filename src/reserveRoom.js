@@ -11,11 +11,12 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font, AppLoading } from "expo";
 
 const NUMBER_OF_BUILDINGS = 30;
-const NUMBER_OF_FLOORS = 5;
 
 const COLORS = {
   building: '#4050B5',
+  selectedBuilding: '#2A3477',
   floor: '#C7B751',
+  selectedFloor: '#A09341',
   wing: '',
   room: '',
 }
@@ -66,7 +67,7 @@ export default class Reserve extends Component {
       return(
         <View key={building}>
           <Button 
-          rounded style={styles.buildingButton} 
+          rounded style={(this.state.selectedBuilding === building) ? styles.selectedBuildingButton : styles.buildingButton } 
           onPress={(e) => {this.setState({selectedBuilding: building});}}
           >
             <Text>{building}</Text>
@@ -76,12 +77,26 @@ export default class Reserve extends Component {
     });
 
     const floorsButtons = this.state.floors.map(floor => {
+      // choosing the color 
+      let color;
+      if (!!this.state.selectedFloor) {
+        if (this.state.selectedFloor.number == floor.number) {
+          color = COLORS.selectedFloor;
+        }
+        else {
+          color = COLORS.floor;
+        }
+      }
+      else {
+        color = COLORS.floor;
+      }
+      
       return(
         <Button 
         key={floor.number} 
         block 
         full  
-        style={{width: '100%', margin: 3, borderRadius: 4, backgroundColor: COLORS.floor, height: 30}}
+        style={{width: '100%', margin: 3, borderRadius: 4, backgroundColor: color, height: 30}}
         onPress={() => {this.setState({selectedFloor: floor})}}
         >
           <Text>
@@ -112,11 +127,11 @@ export default class Reserve extends Component {
             <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
               {this.state.selectedBuilding === null
               ?
-              <Button style={styles.statusButtonWaiting}>
+              <Button disabled style={styles.statusButtonWaiting}>
                  <ActivityIndicator color="white" /> 
               </Button>
               :
-              <Button style={styles.statusButton}>
+              <Button disabled style={styles.statusButton}>
                 <Text style={{fontSize: 20, position: 'relative', left: 20 }}>{this.state.selectedBuilding}</Text>
                 <Icon type="FontAwesome" name="check" />
               </Button>
@@ -141,11 +156,11 @@ export default class Reserve extends Component {
             <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
               {this.state.selectedFloor === null
               ?
-              <Button style={styles.statusButtonWaiting}>
+              <Button disabled style={styles.statusButtonWaiting}>
                  <ActivityIndicator color="white" /> 
               </Button>
               :
-              <Button style={styles.statusButton}>
+              <Button disabled style={styles.statusButton}>
                 <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{this.state.selectedFloor.string + ' Floor'}</Text>
                 <Icon type="FontAwesome" name="check" />
               </Button>
@@ -192,7 +207,15 @@ const styles = StyleSheet.create({
     margin: 3, 
     width: 48, 
     justifyContent: 'center', 
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: COLORS.building
+  },
+  selectedBuildingButton: {
+    margin: 3, 
+    width: 48, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: COLORS.selectedBuilding
   },
   floorButtonsBody: { 
     alignContent: 'center', 
