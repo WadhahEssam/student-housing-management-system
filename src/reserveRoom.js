@@ -11,13 +11,23 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font, AppLoading } from "expo";
 
 const NUMBER_OF_BUILDINGS = 30;
+const NUMBER_OF_FLOORS = 5;
+
+const COLORS = {
+  building: '#4050B5',
+  floor: '#C7B751',
+  wing: '',
+  room: '',
+}
 
 export default class Reserve extends Component {
 
   state = { 
     buildings: [],
+    floors: [],
     loadingFont: true,
     selectedBuilding: null,
+    selectedFloor: null,
   }
 
   async componentWillMount() {
@@ -34,11 +44,16 @@ export default class Reserve extends Component {
     for(let i = 0; i < NUMBER_OF_BUILDINGS; i++) {
       buildings.push(i+1);
     }
-    this.setState({ buildings });
-  }
 
-  selectBuilding = () => {
-    
+    // filling the floors
+    let floors = [] 
+    floors.push({number: 1, string: 'first'});
+    floors.push({number: 2, string: 'second'});
+    floors.push({number: 3, string: 'third'});
+    floors.push({number: 4, string: 'forth'});
+    floors.push({number: 5, string: 'fifth'});
+
+    this.setState({ buildings, floors });
   }
 
   render() {
@@ -58,7 +73,23 @@ export default class Reserve extends Component {
           </Button>
         </View>
       );
-    })
+    });
+
+    const floorsButtons = this.state.floors.map(floor => {
+      return(
+        <Button 
+        key={floor.number} 
+        block 
+        full  
+        style={{width: '100%', margin: 3, borderRadius: 4, backgroundColor: COLORS.floor, height: 30}}
+        onPress={() => {this.setState({selectedFloor: floor})}}
+        >
+          <Text>
+            {floor.string}
+          </Text>
+        </Button>
+      );
+    });
 
     console.log(this.state);
     return (
@@ -68,7 +99,7 @@ export default class Reserve extends Component {
           <Card>
             <CardItem bordered style={{justifyContent: 'center'}}>
               <Text 
-              style={{fontWeight: '800', color: '#4050B5', fontSize: 20}}
+              style={{fontWeight: '800', color: COLORS.building, fontSize: 20}}
               >
                 Choose Building
               </Text>
@@ -81,12 +112,41 @@ export default class Reserve extends Component {
             <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
               {this.state.selectedBuilding === null
               ?
-              <Button style={styles.buildingStatusButtonWaiting}>
+              <Button style={styles.statusButtonWaiting}>
                  <ActivityIndicator color="white" /> 
               </Button>
               :
-              <Button style={styles.buildingStatusButton}>
+              <Button style={styles.statusButton}>
                 <Text style={{fontSize: 20, position: 'relative', left: 20 }}>{this.state.selectedBuilding}</Text>
+                <Icon type="FontAwesome" name="check" />
+              </Button>
+              }
+            </CardItem>
+          </Card>
+
+          {/* The floors card */}
+          <Card>
+            <CardItem bordered style={{justifyContent: 'center'}}>
+              <Text 
+              style={{fontWeight: '800', color: COLORS.floor, fontSize: 20}}
+              >
+                Choose Floor
+              </Text>
+            </CardItem>
+            <CardItem>
+              <Body style={styles.buildingButtonsBody}>
+                {floorsButtons}
+              </Body>
+            </CardItem>
+            <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
+              {this.state.selectedFloor === null
+              ?
+              <Button style={styles.statusButtonWaiting}>
+                 <ActivityIndicator color="white" /> 
+              </Button>
+              :
+              <Button style={styles.statusButton}>
+                <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{this.state.selectedFloor.string + ' Floor'}</Text>
                 <Icon type="FontAwesome" name="check" />
               </Button>
               }
@@ -109,13 +169,13 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
   }, 
-  buildingStatusButtonWaiting: {
+  statusButtonWaiting: {
     width: 200,
     justifyContent: 'center',
     alignItems: 'center', 
     backgroundColor: '#A3A3A3'
   }, 
-  buildingStatusButton: {
+  statusButton: {
     width: 200,
     justifyContent: 'center',
     alignItems: 'center', 
@@ -133,7 +193,11 @@ const styles = StyleSheet.create({
     width: 48, 
     justifyContent: 'center', 
     alignItems: 'center'
-  }
+  },
+  floorButtonsBody: { 
+    alignContent: 'center', 
+    justifyContent: 'center' 
+  },
 
 });
 
