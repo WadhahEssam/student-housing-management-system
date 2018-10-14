@@ -34,7 +34,6 @@ export default class home extends Component {
           </Row >
           <Row
             style={{ backgroundColor: '#C1D3A2', borderWidth: 3, borderColor: 'white', }}
-
           >
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
               <View>

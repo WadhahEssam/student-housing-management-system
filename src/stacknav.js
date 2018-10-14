@@ -78,7 +78,7 @@ const AppNavigator = createStackNavigator({
   }
 }, 
   // only for testing
-  // {initialRouteName: 'LoginScreen'}
+  {initialRouteName: 'reserveRoom'}
 );
  
 export default AppNavigator;

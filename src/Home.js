@@ -133,6 +133,7 @@ export default class home extends Component {
             </Col >
             <Col
               style={{ backgroundColor: '#858786', borderWidth: 1, borderColor: 'white', }}
+              onPress={() => this.props.navigation.navigate('logout')}
             >
               <View style={{
                 flex: 1, justifyContent: 'center', alignItems: 'center',

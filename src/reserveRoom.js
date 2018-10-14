@@ -1,368 +1,83 @@
 import React, { Component } from "react";
 import {
-  Text,
   View,
   StyleSheet,
   Image,
   AsyncStorage,
+  ActivityIndicator
 } from 'react-native';
-import {
-  Container,
-} from 'native-base';
+import { Container, Header, Content, Card, CardItem, Text, Body, Button } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Font, AppLoading } from "expo";
+
+const NUMBER_OF_BUILDINGS = 30;
 
 export default class Reserve extends Component {
 
+  state = { 
+    buildings: [],
+    loadingFont: true,
+    selectedBuilding: null,
+  }
+
+  async componentWillMount() {
+    // to solve error with font
+    await Expo.Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
+    });
+    this.setState({ loadingFont: false });
+
+    // filling the buildings
+    let buildings = []
+    for(let i = 0; i < NUMBER_OF_BUILDINGS; i++) {
+      buildings.push(i+1);
+    }
+    this.setState({ buildings });
+  }
+
+  selectBuilding = () => {
+    
+  }
+
   render() {
-    return (
-      <Container>
-
-        <View style={{ height: 90 }}>
-          <Grid>
-
-
-
-
-
-            <Row>
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>1</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>2</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>3</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>4</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>5</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>6</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>7</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>8</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>9</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>10</Text>
-                  </View>
-
-                </View>
-              </Col >
-            </Row>
-
-            <Row>
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>11</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>12</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>13</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>14</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>15</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>16</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>17</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>18</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>19</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>20</Text>
-                  </View>
-
-                </View>
-              </Col >
-            </Row>
-            <Row>
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>21</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>22</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>23</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>24</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>25</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>26</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>27</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>28</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>29</Text>
-                  </View>
-
-                </View>
-              </Col >
-              <Col
-                style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-
-              >
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>30</Text>
-                  </View>
-
-                </View>
-              </Col >
-            </Row>
-          </Grid>
+    // to solve error with font
+    if (this.state.loadingFont) {
+      return <Expo.AppLoading />;
+    }
+
+    const buildingButtons = this.state.buildings.map(building => {
+      return(
+        <View key={building}>
+          <Button rounded style={styles.buildingButton} onPress={this.selectBuilding}>
+            <Text>{building}</Text>
+          </Button>
         </View>
+      );
+    })
+
+    return (
+      <Container style={{padding: 10}}>
+        <Content>
+          {/* The buildings card */}
+          <Card>
+            <CardItem header bordered>
+              <Text style={{fontWeight: '800'}}>Choose Building</Text>
+            </CardItem>
+            <CardItem>
+              <Body style={styles.buildingButtonsBody}>
+                {buildingButtons}
+              </Body>
+            </CardItem>
+            <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
+              <Button style={styles.buildingStatusButton}>
+                <ActivityIndicator color="white" />
+              </Button>
+            </CardItem>
+         </Card>
+
+        </Content>
       </Container>
     )
   }
@@ -377,7 +92,27 @@ const styles = StyleSheet.create({
   icon2: {
     width: 100,
     height: 100,
+  }, 
+  buildingStatusButton: {
+    width: 200,
+    justifyContent: 'center',
+    alignItems: 'center', 
+    backgroundColor: '#A3A3A3'
+  },
+  buildingButtonsBody: { 
+    flex: 1, 
+    flexDirection: 'row', 
+    flexWrap: 'wrap', 
+    alignContent: 'center', 
+    justifyContent: 'center' 
+  },
+  buildingButton: {
+    margin: 3, 
+    width: 48, 
+    justifyContent: 'center', 
+    alignItems: 'center'
   }
+
 });
 
 
