@@ -19,7 +19,8 @@ const COLORS = {
   selectedFloor: '#A09341',
   wing: '#3EA683',
   selectedWing: '#2D7A60',
-  room: '',
+  room: '#B27B38',
+  selectedRoom: '#885E2B'
 }
 
 export default class Reserve extends Component {
@@ -31,6 +32,8 @@ export default class Reserve extends Component {
     selectedBuilding: null,
     selectedFloor: null,
     selectedWing: {number: 0, string: 'none'},
+    loadingRooms: true,
+    selectedRoom: null,
   }
 
   async componentWillMount() {
@@ -50,11 +53,11 @@ export default class Reserve extends Component {
 
     // filling the floors
     let floors = [] 
-    floors.push({number: 1, string: 'first'});
-    floors.push({number: 2, string: 'second'});
-    floors.push({number: 3, string: 'third'});
-    floors.push({number: 4, string: 'forth'});
     floors.push({number: 5, string: 'fifth'});
+    floors.push({number: 4, string: 'forth'});
+    floors.push({number: 3, string: 'third'});
+    floors.push({number: 2, string: 'second'});
+    floors.push({number: 1, string: 'first'});
 
     // filling the wings 
     // used different way for wings so 
@@ -63,7 +66,48 @@ export default class Reserve extends Component {
     this.setState({ buildings, floors });
   }
 
+
+  renderRooms = () => {
+    if (this.state.loadingRooms) {
+      return(
+        <CardItem bordered>
+          <Body style={styles.buildingButtonsBody}>
+            <View>
+              <Text style={{marginBottom: 10, color: COLORS.room}}>Fetching</Text>
+              <ActivityIndicator color={COLORS.room} size="large"/>
+            </View>
+          </Body>
+        </CardItem>
+      );
+    } else {
+      <CardItem bordered>
+        <Body style={styles.buildingButtonsBody}>
+          <View>
+            <Text>Rooms</Text>
+          </View>
+        </Body>
+      </CardItem>
+    }
+
+  }
+
+  renderSelectRoomButton = () => {
+    if(this.state.selectedRoom === null) {
+      return(
+        <Button disabled style={styles.statusButtonWaiting}>
+            <ActivityIndicator color="white" /> 
+        </Button>
+      );
+    }
+
+  }
+
   render() {
+    // console.log(this.state);
+
+    // boolean checks if you can fetch the room or not 
+    const roomCanBeFetched = (this.state.selectedBuilding !== null && this.state.selectedFloor !== null && this.state.selectedWing.number !== 0);
+
     // to solve error with font
     if (this.state.loadingFont) {
       return <Expo.AppLoading />;
@@ -138,7 +182,7 @@ export default class Reserve extends Component {
       </View>
     );
 
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <Container style={{padding: 10}}>
         <Content>
@@ -230,6 +274,31 @@ export default class Reserve extends Component {
             </CardItem>
           </Card>
           
+          {/* The rooms card */}
+          <Card>
+            <CardItem bordered style={{justifyContent: 'center'}}>
+              <Text 
+              style={{fontWeight: '800', color: COLORS.room, fontSize: 20}}
+              >
+                Choose Room
+              </Text>
+            </CardItem>
+            
+            {!roomCanBeFetched ? <View/> : this.renderRooms() }
+
+            <CardItem footer style={{flexDirection: 'row', justifyContent: 'center' }}>
+              {!roomCanBeFetched
+              ?
+              <Button disabled style={styles.statusButtonError}>
+                <Text style={{fontSize: 15, position: 'relative', left: 10 }}>Select ( building floor wing )</Text>
+                <Icon type="FontAwesome" name="exclamation-triangle" />
+              </Button>
+              :
+              this.renderSelectRoomButton()
+              }
+            </CardItem>
+          </Card>
+
         </Content>
       </Container>
     )
@@ -251,6 +320,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center', 
     backgroundColor: '#A3A3A3'
+  }, 
+  statusButtonError: {
+    width: 330,
+    justifyContent: 'center',
+    alignItems: 'center', 
+    backgroundColor: '#B21515',
   }, 
   statusButton: {
     width: 200,
