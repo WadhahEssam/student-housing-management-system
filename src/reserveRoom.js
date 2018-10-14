@@ -6,7 +6,7 @@ import {
   AsyncStorage,
   ActivityIndicator
 } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Text, Body, Button } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Text, Body, Button, Icon } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Font, AppLoading } from "expo";
 
@@ -50,20 +50,28 @@ export default class Reserve extends Component {
     const buildingButtons = this.state.buildings.map(building => {
       return(
         <View key={building}>
-          <Button rounded style={styles.buildingButton} onPress={this.selectBuilding}>
+          <Button 
+          rounded style={styles.buildingButton} 
+          onPress={(e) => {this.setState({selectedBuilding: building});}}
+          >
             <Text>{building}</Text>
           </Button>
         </View>
       );
     })
 
+    console.log(this.state);
     return (
       <Container style={{padding: 10}}>
         <Content>
           {/* The buildings card */}
           <Card>
-            <CardItem header bordered>
-              <Text style={{fontWeight: '800'}}>Choose Building</Text>
+            <CardItem bordered style={{justifyContent: 'center'}}>
+              <Text 
+              style={{fontWeight: '800', color: '#4050B5', fontSize: 20}}
+              >
+                Choose Building
+              </Text>
             </CardItem>
             <CardItem>
               <Body style={styles.buildingButtonsBody}>
@@ -71,9 +79,17 @@ export default class Reserve extends Component {
               </Body>
             </CardItem>
             <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
-              <Button style={styles.buildingStatusButton}>
-                <ActivityIndicator color="white" />
+              {this.state.selectedBuilding === null
+              ?
+              <Button style={styles.buildingStatusButtonWaiting}>
+                 <ActivityIndicator color="white" /> 
               </Button>
+              :
+              <Button style={styles.buildingStatusButton}>
+                <Text style={{fontSize: 20, position: 'relative', left: 20 }}>{this.state.selectedBuilding}</Text>
+                <Icon type="FontAwesome" name="check" />
+              </Button>
+              }
             </CardItem>
          </Card>
 
@@ -93,11 +109,17 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
   }, 
-  buildingStatusButton: {
+  buildingStatusButtonWaiting: {
     width: 200,
     justifyContent: 'center',
     alignItems: 'center', 
     backgroundColor: '#A3A3A3'
+  }, 
+  buildingStatusButton: {
+    width: 200,
+    justifyContent: 'center',
+    alignItems: 'center', 
+    backgroundColor: '#5D9D62'
   },
   buildingButtonsBody: { 
     flex: 1, 
