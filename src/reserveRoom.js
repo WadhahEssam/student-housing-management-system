@@ -10,8 +10,6 @@ import {
   ActivityIndicator
 } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Text, Body, Button, Icon } from 'native-base';
-import { Col, Row, Grid } from 'react-native-easy-grid';
-import { Font, AppLoading } from "expo";
 
 const NUMBER_OF_BUILDINGS = 30;
 
@@ -24,7 +22,8 @@ const COLORS = {
   selectedWing: '#2D7A60',
   room: '#AC5894',
   selectedRoom: '#773D66',
-  takenRoom: '#CE2B28'
+  takenRoom: '#CE2B28',
+  success: '#6AAF6F'
 }
 
 export default class Reserve extends Component {
@@ -112,13 +111,13 @@ export default class Reserve extends Component {
   renderSelectRoomButton = () => {
     if(this.state.selectedRoom === null) {
       return(
-        <Button disabled style={styles.statusButtonWaiting}>
-            <ActivityIndicator color="white" /> 
+        <Button transparent disabled style={styles.statusButtonWaiting}>
+            <ActivityIndicator color="grey" /> 
         </Button>
       );
     } else {
       return(
-        <Button disabled style={styles.statusButton}>
+        <Button transparent disabled style={styles.statusButton}>
           <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{'Room NO. ' + this.state.selectedRoom.room_number }</Text>
           <Icon type="FontAwesome" name="check" />
         </Button>
@@ -127,7 +126,7 @@ export default class Reserve extends Component {
   }
 
   fetchRooms = async () => {
-    if (this.state.loadingRooms == true) {
+    if (this.state.loadingRooms) {
       const building = this.state.selectedBuilding;
       const floor = this.state.selectedFloor.number;
       const wing = this.state.selectedWing.number;
@@ -259,11 +258,11 @@ export default class Reserve extends Component {
             <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
               {this.state.selectedBuilding === null
               ?
-              <Button disabled style={styles.statusButtonWaiting}>
-                 <ActivityIndicator color="white" /> 
+              <Button transparent disabled style={styles.statusButtonWaiting}>
+                 <ActivityIndicator color="grey" /> 
               </Button>
               :
-              <Button disabled style={styles.statusButton}>
+              <Button transparent success disabled style={styles.statusButton}>
                 <Text style={{fontSize: 20, position: 'relative', left: 20 }}>{this.state.selectedBuilding}</Text>
                 <Icon type="FontAwesome" name="check" />
               </Button>
@@ -288,11 +287,11 @@ export default class Reserve extends Component {
             <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
               {this.state.selectedFloor === null
               ?
-              <Button disabled style={styles.statusButtonWaiting}>
-                 <ActivityIndicator color="white" /> 
+              <Button transparent disabled style={styles.statusButtonWaiting}>
+                 <ActivityIndicator color="grey" /> 
               </Button>
               :
-              <Button disabled style={styles.statusButton}>
+              <Button transparent disabled style={styles.statusButton}>
                 <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{this.state.selectedFloor.string + ' Floor'}</Text>
                 <Icon type="FontAwesome" name="check" />
               </Button>
@@ -317,11 +316,11 @@ export default class Reserve extends Component {
             <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
               {this.state.selectedWing.number === 0
               ?
-              <Button disabled style={styles.statusButtonWaiting}>
-                 <ActivityIndicator color="white" /> 
+              <Button transparent disabled style={styles.statusButtonWaiting}>
+                 <ActivityIndicator color="grey" /> 
               </Button>
               :
-              <Button disabled style={styles.statusButton}>
+              <Button transparent disabled style={styles.statusButton}>
                 <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{this.state.selectedWing.string + ' Wing'}</Text>
                 <Icon type="FontAwesome" name="check" />
               </Button>
@@ -374,7 +373,6 @@ const styles = StyleSheet.create({
     width: 200,
     justifyContent: 'center',
     alignItems: 'center', 
-    backgroundColor: '#A3A3A3'
   }, 
   statusButtonError: {
     width: 330,
@@ -386,7 +384,6 @@ const styles = StyleSheet.create({
     width: 200,
     justifyContent: 'center',
     alignItems: 'center', 
-    backgroundColor: '#8CCE91'
   },
   buildingButtonsBody: { 
     flex: 1, 
@@ -397,14 +394,14 @@ const styles = StyleSheet.create({
   },
   buildingButton: {
     margin: 3, 
-    width: 48, 
+    width: 50, 
     justifyContent: 'center', 
     alignItems: 'center',
     backgroundColor: COLORS.building
   },
   selectedBuildingButton: {
     margin: 3, 
-    width: 48, 
+    width: 50, 
     justifyContent: 'center', 
     alignItems: 'center',
     backgroundColor: COLORS.selectedBuilding
