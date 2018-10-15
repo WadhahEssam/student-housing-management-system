@@ -90,7 +90,7 @@ export default class Reserve extends Component {
       return(
         <CardItem bordered>
           <Body style={styles.buildingButtonsBody}>
-            <View>
+            <View style={{paddingVertical: 20}}>
               <Text style={{marginBottom: 10, color: COLORS.room}}>Fetching</Text>
               <ActivityIndicator color={COLORS.room} size="large"/>
             </View>
@@ -117,7 +117,7 @@ export default class Reserve extends Component {
       );
     } else {
       return(
-        <Button transparent disabled style={styles.statusButton}>
+        <Button transparent small disabled style={styles.statusButton}>
           <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{'Room NO. ' + this.state.selectedRoom.room_number }</Text>
           <Icon type="FontAwesome" name="check" />
         </Button>
@@ -361,7 +361,7 @@ export default class Reserve extends Component {
           </Card>
 
           {/* The submitt card */}
-          <Card transparent>
+          <Card transparent style={{marginBottom: 20}}>
             <CardItem style={{justifyContent: 'center'}}>
               <Button 
               full 
