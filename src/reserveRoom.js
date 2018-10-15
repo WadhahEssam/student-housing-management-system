@@ -144,6 +144,8 @@ export default class Reserve extends Component {
     // boolean checks if you can fetch the room or not 
     const roomCanBeFetched = (this.state.selectedBuilding !== null && this.state.selectedFloor !== null && this.state.selectedWing.number !== 0);
 
+    const canSubmit = (this.state.selectedBuilding !== null && this.state.selectedFloor !== null && this.state.selectedWing.number !== 0 && this.state.selectedRoom !== null);
+
     // check if it is the fifth floor 
     // cuz it only has one wing 
     let isFifthFloor;
@@ -343,13 +345,27 @@ export default class Reserve extends Component {
             <CardItem footer style={{flexDirection: 'row', justifyContent: 'center' }}>
               {!roomCanBeFetched
               ?
-              <Button disabled style={styles.statusButtonError}>
-                <Text style={{fontSize: 12, position: 'relative', left: 10 }}>First Select ( building floor wing )</Text>
-                <Icon type="FontAwesome" name="exclamation-triangle" />
+              <Button transparent disabled style={styles.statusButtonError}>
+                <Text style={{fontSize: 14, position: 'relative', left: 10, color: '#B21515' }}>First Select ( building floor wing )</Text>
+                <Icon style={{color: '#B21515'}} type="FontAwesome" name="exclamation-triangle" />
               </Button>
               :
               this.renderSelectRoomButton()
               }
+            </CardItem>
+          </Card>
+
+          {/* The submitt card */}
+          <Card transparent>
+            <CardItem style={{justifyContent: 'center'}}>
+              <Button 
+              full 
+              block 
+              disabled={!canSubmit}
+              style={{width: 200, height: 70, borderRadius: 5}}
+              >
+                <Text style={{fontSize: 20}}>Submit</Text>
+              </Button>
             </CardItem>
           </Card>
 
@@ -378,7 +394,6 @@ const styles = StyleSheet.create({
     width: 330,
     justifyContent: 'center',
     alignItems: 'center', 
-    backgroundColor: '#B21515',
   }, 
   statusButton: {
     width: 200,
