@@ -22,8 +22,9 @@ const COLORS = {
   selectedFloor: '#A09341',
   wing: '#3EA683',
   selectedWing: '#2D7A60',
-  room: '#B27B38',
-  selectedRoom: '#885E2B'
+  room: '#AC5894',
+  selectedRoom: '#773D66',
+  takenRoom: '#CE2B28'
 }
 
 export default class Reserve extends Component {
@@ -41,10 +42,6 @@ export default class Reserve extends Component {
   }
 
   async componentWillMount() {
-    // test fetching 
-    // const room = await axios.post(`${env.url}/getRoomsForWing`, qs.stringify({building: 1, floor: 1, wing: 1}));
-    // console.log(room.data);
-
     // to solve error with font
     await Expo.Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
@@ -74,9 +71,21 @@ export default class Reserve extends Component {
     this.setState({ buildings, floors });
   }
 
-
   renderRooms = () => {
     this.fetchRooms();
+    const roomButtons = this.state.rooms.map(room => {
+      return(
+        <View key={room.id}>
+          <Button 
+          disabled={room.student_id != null}
+          style={(room.student_id !== null) ? styles.takenRoomButton : (this.state.selectedRoom === room) ? styles.selectedRoomButton : styles.roomButton } 
+          onPress={(e) => {this.setState({selectedRoom: room});}}
+          >
+            <Text>{room.room_number}</Text>
+          </Button>
+        </View>
+      );
+    });
 
     if (this.state.loadingRooms) {
       return(
@@ -90,13 +99,13 @@ export default class Reserve extends Component {
         </CardItem>
       );
     } else {
-      <CardItem bordered>
-        <Body style={styles.buildingButtonsBody}>
-          <View>
-            <Text>Rooms</Text>
-          </View>
-        </Body>
-      </CardItem>
+      return(
+        <CardItem bordered>
+          <Body style={styles.buildingButtonsBody}>
+            {roomButtons}
+          </Body>
+        </CardItem>
+      );
     }
   }
 
@@ -105,6 +114,13 @@ export default class Reserve extends Component {
       return(
         <Button disabled style={styles.statusButtonWaiting}>
             <ActivityIndicator color="white" /> 
+        </Button>
+      );
+    } else {
+      return(
+        <Button disabled style={styles.statusButton}>
+          <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{'Room NO. ' + this.state.selectedRoom.room_number }</Text>
+          <Icon type="FontAwesome" name="check" />
         </Button>
       );
     }
@@ -119,7 +135,6 @@ export default class Reserve extends Component {
         `${env.url}/getRoomsForWing`, 
         qs.stringify({building, floor, wing})
       );
-      console.log(`fetching data ${building}, ${floor}, ${wing}`);
       this.setState({loadingRooms: false, rooms: rooms.data})
     }
   }
@@ -129,6 +144,15 @@ export default class Reserve extends Component {
 
     // boolean checks if you can fetch the room or not 
     const roomCanBeFetched = (this.state.selectedBuilding !== null && this.state.selectedFloor !== null && this.state.selectedWing.number !== 0);
+
+    // check if it is the fifth floor 
+    // cuz it only has one wing 
+    let isFifthFloor;
+    if (this.state.selectedFloor !== null) {
+      isFifthFloor = (this.state.selectedFloor.number == 5) ? true : false ;
+    } else {
+      isFifthFloor = false;
+    }
 
     // to solve error with font
     if (this.state.loadingFont) {
@@ -178,6 +202,16 @@ export default class Reserve extends Component {
       );
     });
 
+    const wingsButtonsInFifthFloor = (
+      <View>
+        <View style={{position: 'relative'}}>
+          <Button style={(this.state.selectedWing.number === 1) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 1, string: 'first'}, loadingRooms: true})}}>
+            <Text>First</Text>
+          </Button>
+        </View>
+      </View>
+    );
+
     const wingsButtons = (
       <View>
         <View style={{position: 'relative', left: 50}}>
@@ -204,7 +238,6 @@ export default class Reserve extends Component {
       </View>
     );
 
-    // console.log(this.state);
     return (
       <Container style={{padding: 10}}>
         <Content>
@@ -278,7 +311,7 @@ export default class Reserve extends Component {
             </CardItem>
             <CardItem>
               <Body style={styles.buildingButtonsBody}>
-                {wingsButtons}
+                {(isFifthFloor) ? wingsButtonsInFifthFloor : wingsButtons}
               </Body>
             </CardItem>
             <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
@@ -312,7 +345,7 @@ export default class Reserve extends Component {
               {!roomCanBeFetched
               ?
               <Button disabled style={styles.statusButtonError}>
-                <Text style={{fontSize: 15, position: 'relative', left: 10 }}>Select ( building floor wing )</Text>
+                <Text style={{fontSize: 12, position: 'relative', left: 10 }}>First Select ( building floor wing )</Text>
                 <Icon type="FontAwesome" name="exclamation-triangle" />
               </Button>
               :
@@ -353,7 +386,7 @@ const styles = StyleSheet.create({
     width: 200,
     justifyContent: 'center',
     alignItems: 'center', 
-    backgroundColor: '#5D9D62'
+    backgroundColor: '#8CCE91'
   },
   buildingButtonsBody: { 
     flex: 1, 
@@ -391,7 +424,28 @@ const styles = StyleSheet.create({
     width: 100, 
     justifyContent: 'center',
     backgroundColor: COLORS.selectedWing
-  }
+  },
+  roomButton: {
+    margin: 3, 
+    width: 70, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: COLORS.room
+  },
+  selectedRoomButton: {
+    margin: 3, 
+    width: 70, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: COLORS.selectedRoom
+  },
+  takenRoomButton: {
+    margin: 3, 
+    width: 70, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: COLORS.takenRoom
+  },
 
 });
 
