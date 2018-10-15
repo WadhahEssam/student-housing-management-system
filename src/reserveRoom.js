@@ -165,7 +165,7 @@ export default class Reserve extends Component {
         <View key={building}>
           <Button 
           rounded style={(this.state.selectedBuilding === building) ? styles.selectedBuildingButton : styles.buildingButton } 
-          onPress={(e) => {this.setState({selectedBuilding: building, loadingRooms: true});}}
+          onPress={(e) => {this.setState({selectedBuilding: building, loadingRooms: true, selectedRoom: null});}}
           >
             <Text>{building}</Text>
           </Button>
@@ -194,7 +194,7 @@ export default class Reserve extends Component {
         block 
         full  
         style={{width: '100%', margin: 3, borderRadius: 4, backgroundColor: color, height: 30}}
-        onPress={() => {this.setState({selectedFloor: floor, loadingRooms: true})}}
+        onPress={() => {this.setState({selectedFloor: floor, loadingRooms: true, selectedRoom: null})}}
         >
           <Text>
             {floor.string}
@@ -206,7 +206,7 @@ export default class Reserve extends Component {
     const wingsButtonsInFifthFloor = (
       <View>
         <View style={{position: 'relative'}}>
-          <Button style={(this.state.selectedWing.number === 1) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 1, string: 'first'}, loadingRooms: true})}}>
+          <Button style={(this.state.selectedWing.number === 1) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 1, string: 'first'}, loadingRooms: true, selectedRoom: null})}}>
             <Text>First</Text>
           </Button>
         </View>
@@ -216,23 +216,23 @@ export default class Reserve extends Component {
     const wingsButtons = (
       <View>
         <View style={{position: 'relative', left: 50}}>
-          <Button style={(this.state.selectedWing.number === 1) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 1, string: 'first'}, loadingRooms: true})}}>
+          <Button style={(this.state.selectedWing.number === 1) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 1, string: 'first'}, loadingRooms: true, selectedRoom: null})}}>
             <Text>First</Text>
           </Button>
         </View>
 
         <View style={{ flexDirection: 'row' }}>
-          <Button style={(this.state.selectedWing.number === 2) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 2, string: 'second'}, loadingRooms: true})}}>
+          <Button style={(this.state.selectedWing.number === 2) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 2, string: 'second'}, loadingRooms: true, selectedRoom: null})}}>
             <Text>Second</Text>
           </Button>
 
-          <Button style={(this.state.selectedWing.number === 4) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 4, string: 'forth'}, loadingRooms: true})}}>
+          <Button style={(this.state.selectedWing.number === 4) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 4, string: 'forth'}, loadingRooms: true, selectedRoom: null})}}>
             <Text>Forth</Text>
           </Button>
         </View>
 
         <View style={{position: 'relative', left: 50}}>
-          <Button style={(this.state.selectedWing.number === 3) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 3, string: 'third'}, loadingRooms: true})}}>
+          <Button style={(this.state.selectedWing.number === 3) ? styles.selectedWingButton : styles.wingButton} onPress={() => {this.setState({selectedWing: {number: 3, string: 'third'}, loadingRooms: true, selectedRoom: null})}}>
             <Text>Third</Text>
           </Button>
         </View>
