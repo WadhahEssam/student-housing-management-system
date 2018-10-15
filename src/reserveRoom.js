@@ -111,9 +111,9 @@ export default class Reserve extends Component {
   renderSelectRoomButton = () => {
     if(this.state.selectedRoom === null) {
       return(
-        <Button transparent disabled style={styles.statusButtonWaiting}>
-            <ActivityIndicator color="grey" /> 
-        </Button>
+        <View>
+          <Text style={{color: 'grey'}}>Choose Room</Text>
+        </View>
       );
     } else {
       return(
@@ -249,7 +249,7 @@ export default class Reserve extends Component {
               <Text 
               style={{fontWeight: '800', color: COLORS.building, fontSize: 20}}
               >
-                Choose Building
+                Buildings
               </Text>
             </CardItem>
             <CardItem>
@@ -257,12 +257,14 @@ export default class Reserve extends Component {
                 {buildingButtons}
               </Body>
             </CardItem>
-            <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
+            <CardItem 
+            bordered={this.state.selectedBuilding !== null} 
+            footer 
+            style={{flexDirection: 'row', justifyContent: 'center' }}
+            >
               {this.state.selectedBuilding === null
               ?
-              <Button transparent disabled style={styles.statusButtonWaiting}>
-                 <ActivityIndicator color="grey" /> 
-              </Button>
+              <View/>
               :
               <Button transparent success disabled style={styles.statusButton}>
                 <Text style={{fontSize: 20, position: 'relative', left: 20 }}>{this.state.selectedBuilding}</Text>
@@ -278,7 +280,7 @@ export default class Reserve extends Component {
               <Text 
               style={{fontWeight: '800', color: COLORS.floor, fontSize: 20}}
               >
-                Choose Floor
+                Floors
               </Text>
             </CardItem>
             <CardItem>
@@ -286,12 +288,13 @@ export default class Reserve extends Component {
                 {floorsButtons}
               </Body>
             </CardItem>
-            <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
+            <CardItem 
+            bordered={this.state.selectedFloor !== null} 
+            footer style={{flexDirection: 'row', justifyContent: 'center' }}
+            >
               {this.state.selectedFloor === null
               ?
-              <Button transparent disabled style={styles.statusButtonWaiting}>
-                 <ActivityIndicator color="grey" /> 
-              </Button>
+              <View/>
               :
               <Button transparent disabled style={styles.statusButton}>
                 <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{this.state.selectedFloor.string + ' Floor'}</Text>
@@ -307,7 +310,7 @@ export default class Reserve extends Component {
               <Text 
               style={{fontWeight: '800', color: COLORS.wing, fontSize: 20}}
               >
-                Choose Wing
+                Wings
               </Text>
             </CardItem>
             <CardItem>
@@ -315,12 +318,14 @@ export default class Reserve extends Component {
                 {(isFifthFloor) ? wingsButtonsInFifthFloor : wingsButtons}
               </Body>
             </CardItem>
-            <CardItem bordered footer style={{flexDirection: 'row', justifyContent: 'center' }}>
+            <CardItem 
+            bordered={this.state.selectedWing.number !== 0} 
+            footer 
+            style={{flexDirection: 'row', justifyContent: 'center' }}
+            >
               {this.state.selectedWing.number === 0
               ?
-              <Button transparent disabled style={styles.statusButtonWaiting}>
-                 <ActivityIndicator color="grey" /> 
-              </Button>
+              <View/>
               :
               <Button transparent disabled style={styles.statusButton}>
                 <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{this.state.selectedWing.string + ' Wing'}</Text>
@@ -336,13 +341,13 @@ export default class Reserve extends Component {
               <Text 
               style={{fontWeight: '800', color: COLORS.room, fontSize: 20}}
               >
-                Choose Room
+                Rooms
               </Text>
             </CardItem>
             
             {!roomCanBeFetched ? <View/> : this.renderRooms() }
 
-            <CardItem footer style={{flexDirection: 'row', justifyContent: 'center' }}>
+            <CardItem bordered={this.state.selectedRoom !== null} footer style={{flexDirection: 'row', justifyContent: 'center' }}>
               {!roomCanBeFetched
               ?
               <Button transparent disabled style={styles.statusButtonError}>
