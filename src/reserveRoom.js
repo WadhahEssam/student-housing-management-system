@@ -63,10 +63,6 @@ export default class Reserve extends Component {
     floors.push({number: 2, string: 'second'});
     floors.push({number: 1, string: 'first'});
 
-    // filling the wings 
-    // used different way for wings so 
-    // i didn't use state to store it
-    
     this.setState({ buildings, floors });
   }
   
@@ -90,7 +86,8 @@ export default class Reserve extends Component {
     axios.post(`${env.url}/setStudentRoom`, qs.stringify({token, room_id}))
     .then(response => {
       console.log(response.data)
-      this.props.navigation.push('Home', {newRoom: this.state.selectedRoom});
+      this.setState({selectedFloor: null, selectedBuilding:null, selectedWing: {number: 0, string: 'none'}, selectedRoom: null })
+      this.props.navigation.navigate('Home', {newRoom: 'true'});
     })
     .catch(error => {console.log(error)});
 

@@ -34,12 +34,19 @@ export default class home extends Component {
 
   componentDidMount() {
     this.fetchData();
-  }
 
-  componentDidUpdate() {
-    if (this.props.navigation.getParam('newRoom')) {
-      this.props.navigation.navigate('Home', {newRoom: undefined});
-    }
+    // attaching even listerner so the screen 
+    // fetches the data making sure the user
+    // didn't change his room 
+    const didBlurSubscription = this.props.navigation.addListener(
+      'willFocus',
+      payload => {
+        console.log(this.props.navigation.getParam('newRoom'));
+        if(this.props.navigation.getParam('newRoom') !== undefined) {
+          this.fetchData();
+        }
+      }
+    );
   }
 
   fetchData = async () => {
@@ -128,7 +135,7 @@ export default class home extends Component {
           <Row>
             <Col
               style={{ backgroundColor: '#CAB7A2', borderWidth: 1, borderColor: 'white', }}
-              onPress={() => this.props.navigation.navigate('reserveRoom', {fetchData: function() {this.fetchData()} })}
+              onPress={() => this.props.navigation.push('reserveRoom')}
             >
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <View>
@@ -246,7 +253,6 @@ export default class home extends Component {
   }
 
   render() {
-
 
     return (
       <Container>
