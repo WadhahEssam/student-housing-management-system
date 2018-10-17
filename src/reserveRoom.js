@@ -83,6 +83,15 @@ export default class Reserve extends Component {
     }
   }
 
+  submit = async () => {
+    const token = await AsyncStorage.getItem('token');
+    const room_id = this.state.selectedRoom.id;
+    
+    axios.post(`${env.url}/setStudentRoom`, qs.stringify({token, room_id}))
+    .then(response => {console.log(response.data)})
+    .catch(error => {console.log(error)});
+  }
+
   render() {
     // console.log(this.state);
 
@@ -313,6 +322,7 @@ export default class Reserve extends Component {
               block 
               disabled={!canSubmit}
               style={{width: 200, height: 70, borderRadius: 5}}
+              onPress={()=>{this.submit()}}
               >
                 <Text style={{fontSize: 20}}>Submit</Text>
               </Button>
