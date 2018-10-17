@@ -88,8 +88,12 @@ export default class Reserve extends Component {
     const room_id = this.state.selectedRoom.id;
     
     axios.post(`${env.url}/setStudentRoom`, qs.stringify({token, room_id}))
-    .then(response => {console.log(response.data)})
+    .then(response => {
+      console.log(response.data)
+      this.props.navigation.push('Home', {newRoom: this.state.selectedRoom});
+    })
     .catch(error => {console.log(error)});
+
   }
 
   render() {

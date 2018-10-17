@@ -20,6 +20,7 @@ export default class home extends Component {
     student: null,
     token: null,
     room: 'loading',
+    newDataAvailable: true,
   }
   static navigationOptions = {
     drawerLaber: 'Logout',
@@ -31,13 +32,23 @@ export default class home extends Component {
     )
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  componentDidUpdate() {
+    if (this.props.navigation.getParam('newRoom')) {
+      this.props.navigation.navigate('Home', {newRoom: undefined});
+    }
+  }
+
+  fetchData = async () => {
     const token = await AsyncStorage.getItem('token');
     const student = await axios.post(`${env.url}/getInfo`, qs.stringify({ token }));
     const room = await axios.post(`${env.url}/getStudentRoom`, qs.stringify({ token }));
 
-    this.setState({ token, student: student.data, room: room.data });
-    console.log(this.state);
+    this.setState({ token, student: student.data, room: room.data, newDataAvailable: false });
+    console.log('fetching ...');
   }
 
   renderStudentInformation = () => {
@@ -117,7 +128,7 @@ export default class home extends Component {
           <Row>
             <Col
               style={{ backgroundColor: '#CAB7A2', borderWidth: 1, borderColor: 'white', }}
-              onPress={() => this.props.navigation.navigate('reserveRoom')}
+              onPress={() => this.props.navigation.navigate('reserveRoom', {fetchData: function() {this.fetchData()} })}
             >
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <View>
@@ -200,7 +211,7 @@ export default class home extends Component {
               >
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                   <View>
-                    <Text style={{ fontSize: 20, color: 'white', }}>Reserve Room</Text>
+                    <Text style={{ fontSize: 20, color: 'white', }}>Change Room</Text>
                   </View>
                   <View>
                     <Image
@@ -235,6 +246,8 @@ export default class home extends Component {
   }
 
   render() {
+
+
     return (
       <Container>
         <Grid style={{padding: 7}}>
