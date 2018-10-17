@@ -70,74 +70,6 @@ export default class Reserve extends Component {
     this.setState({ buildings, floors });
   }
 
-  renderRooms = () => {
-    this.fetchRooms();
-    const roomButtons = this.state.rooms.map(room => {
-      return(
-        <View key={room.id}>
-          <Button 
-          disabled={room.student_id != null}
-          style={(room.student_id !== null) ? styles.takenRoomButton : (this.state.selectedRoom === room) ? styles.selectedRoomButton : styles.roomButton } 
-          onPress={(e) => {this.setState({selectedRoom: room});}}
-          >
-            <Text>{room.room_number}</Text>
-          </Button>
-        </View>
-      );
-    });
-
-    if (this.state.loadingRooms) {
-      return(
-        <CardItem bordered>
-          <Body style={styles.buildingButtonsBody}>
-            <View style={{paddingVertical: 20}}>
-              <Text style={{marginBottom: 10, color: COLORS.room}}>Fetching</Text>
-              <ActivityIndicator color={COLORS.room} size="large"/>
-            </View>
-          </Body>
-        </CardItem>
-      );
-    } else {
-      return(
-        <CardItem bordered>
-          <Body style={styles.buildingButtonsBody}>
-            {roomButtons}
-          </Body>
-        </CardItem>
-      );
-    }
-  }
-
-  renderSelectRoomButton = () => {
-    if(this.state.selectedRoom === null) {
-      return(
-        <View>
-          <Text style={{color: 'grey'}}>Choose Room</Text>
-        </View>
-      );
-    } else {
-      return(
-        <Button transparent small disabled style={styles.statusButton}>
-          <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{'Room NO. ' + this.state.selectedRoom.room_number }</Text>
-          <Icon type="FontAwesome" name="check" />
-        </Button>
-      );
-    }
-  }
-
-  fetchRooms = async () => {
-    if (this.state.loadingRooms) {
-      const building = this.state.selectedBuilding;
-      const floor = this.state.selectedFloor.number;
-      const wing = this.state.selectedWing.number;
-      const rooms = await axios.post(
-        `${env.url}/getRoomsForWing`, 
-        qs.stringify({building, floor, wing})
-      );
-      this.setState({loadingRooms: false, rooms: rooms.data})
-    }
-  }
-
   render() {
     // console.log(this.state);
 
@@ -377,6 +309,74 @@ export default class Reserve extends Component {
         </Content>
       </Container>
     )
+  }
+
+  renderRooms = () => {
+    this.fetchRooms();
+    const roomButtons = this.state.rooms.map(room => {
+      return(
+        <View key={room.id}>
+          <Button 
+          disabled={room.student_id != null}
+          style={(room.student_id !== null) ? styles.takenRoomButton : (this.state.selectedRoom === room) ? styles.selectedRoomButton : styles.roomButton } 
+          onPress={(e) => {this.setState({selectedRoom: room});}}
+          >
+            <Text>{room.room_number}</Text>
+          </Button>
+        </View>
+      );
+    });
+
+    if (this.state.loadingRooms) {
+      return(
+        <CardItem bordered>
+          <Body style={styles.buildingButtonsBody}>
+            <View style={{paddingVertical: 20}}>
+              <Text style={{marginBottom: 10, color: COLORS.room}}>Fetching</Text>
+              <ActivityIndicator color={COLORS.room} size="large"/>
+            </View>
+          </Body>
+        </CardItem>
+      );
+    } else {
+      return(
+        <CardItem bordered>
+          <Body style={styles.buildingButtonsBody}>
+            {roomButtons}
+          </Body>
+        </CardItem>
+      );
+    }
+  }
+
+  renderSelectRoomButton = () => {
+    if(this.state.selectedRoom === null) {
+      return(
+        <View>
+          <Text style={{color: 'grey'}}>Choose Room</Text>
+        </View>
+      );
+    } else {
+      return(
+        <Button transparent small disabled style={styles.statusButton}>
+          <Text style={{fontSize: 15, position: 'relative', left: 20 }}>{'Room NO. ' + this.state.selectedRoom.room_number }</Text>
+          <Icon type="FontAwesome" name="check" />
+        </Button>
+      );
+    }
+  }
+
+  fetchRooms = async () => {
+    if (this.state.loadingRooms) {
+      const building = this.state.selectedBuilding;
+      const floor = this.state.selectedFloor.number;
+      const wing = this.state.selectedWing.number;
+      const rooms = await axios.post(
+        `${env.url}/getRoomsForWing`, 
+        qs.stringify({building, floor, wing})
+      );
+      this.setState({loadingRooms: false, rooms: rooms.data})
+    }
   }
 }
 
