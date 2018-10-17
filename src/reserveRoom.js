@@ -69,6 +69,19 @@ export default class Reserve extends Component {
     
     this.setState({ buildings, floors });
   }
+  
+  fetchRooms = async () => {
+    if (this.state.loadingRooms) {
+      const building = this.state.selectedBuilding;
+      const floor = this.state.selectedFloor.number;
+      const wing = this.state.selectedWing.number;
+      const rooms = await axios.post(
+        `${env.url}/getRoomsForWing`, 
+        qs.stringify({building, floor, wing})
+      );
+      this.setState({loadingRooms: false, rooms: rooms.data})
+    }
+  }
 
   render() {
     // console.log(this.state);
@@ -366,18 +379,6 @@ export default class Reserve extends Component {
     }
   }
 
-  fetchRooms = async () => {
-    if (this.state.loadingRooms) {
-      const building = this.state.selectedBuilding;
-      const floor = this.state.selectedFloor.number;
-      const wing = this.state.selectedWing.number;
-      const rooms = await axios.post(
-        `${env.url}/getRoomsForWing`, 
-        qs.stringify({building, floor, wing})
-      );
-      this.setState({loadingRooms: false, rooms: rooms.data})
-    }
-  }
 }
 
 const styles = StyleSheet.create({
