@@ -10,6 +10,7 @@ import { env } from '../env';
 export default class complaints extends Component {
   state = {
     loading: true,
+    complaints: null,
   }
 
   async componentWillMount() {
@@ -25,7 +26,7 @@ export default class complaints extends Component {
     const token = await AsyncStorage.getItem('token');
     axios.post(`${env.url}/getComplaintsForStudent`, qs.stringify({token}))
     .then(async (response) => {
-      console.log(response.data);
+      this.setState({complaints: response.data});
     })
     .catch(error => {
       console.log(error);
@@ -41,7 +42,7 @@ export default class complaints extends Component {
       <Container>
         <Tabs>
           <Tab heading={<TabHeading><Icon name="list" /></TabHeading>}>
-            <ComplaintListTap/>
+            <ComplaintListTap complaints={this.state.complaints} />
           </Tab>
           <Tab heading={<TabHeading><Icon name="add" /></TabHeading>}>
             <AddComplaintTap/>
