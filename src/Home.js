@@ -95,25 +95,25 @@ export default class home extends Component {
           <View style={styles.roomInformationBox}>
             <View style={styles.roomInformationItemBox}>
               <Text style={styles.roomInformationItemText}>
-              Building : {this.state.room.building}
+                Building : {this.state.room.building}
               </Text>
             </View>
             
             <View style={styles.roomInformationItemBox}>
               <Text style={styles.roomInformationItemText}>
-              Floor : {this.state.room.floor}
+                Floor : {this.state.room.floor}
               </Text>
             </View>
 
             <View style={styles.roomInformationItemBox}>
               <Text style={styles.roomInformationItemText}>
-              Wing : {this.state.room.wing}
+                Wing : {this.state.room.wing}
               </Text>
             </View>
 
             <View style={styles.roomInformationItemBox}>
               <Text style={styles.roomInformationItemText}>
-              Room : {this.state.room.room_number}
+                Room : {this.state.room.room_number}
               </Text>
             </View>
           </View> 
