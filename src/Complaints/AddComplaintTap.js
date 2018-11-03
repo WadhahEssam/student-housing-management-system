@@ -25,6 +25,7 @@ class AddComplaintTap extends Component {
       axios.post(`${env.url}/createComplaint`, qs.stringify({token, title, description}))
       .then(async (response) => {
         this.setState({isFetching: false, isSubmitted: true});
+        this.props.refreshComplaints() ;
         setTimeout(() => {
           this.setState({isSubmitted: false});
         }, 2000)

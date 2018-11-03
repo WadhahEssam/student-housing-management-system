@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
-import { View, Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button, Icon, CardItem, Card, Badge } from 'native-base';
+import { View, Container, Content, List, Text, Left, Body, Right, Icon, CardItem, Card, Badge } from 'native-base';
 
 class ComplaintListTap extends Component {
 
   renderListItems = () => {
-
-
     if (this.props.complaints != null) {
       return this.props.complaints.slice(0).reverse().map((complaint) => {
         const isClosed = complaint.replay !== null;
@@ -59,12 +57,12 @@ class ComplaintListTap extends Component {
         );
       });
     } else {
-      return <ActivityIndicator />
+      return <ActivityIndicator size={60} color="#4050B5" />
     }
   }
 
   render() {
-    // console.log(this.props.complaints);
+    console.log(this.props.complaints);
     return (
       <Container>
         <Content padder>
@@ -78,21 +76,7 @@ class ComplaintListTap extends Component {
 }
 
 const styles = StyleSheet.create({
-  statusView: {
-    position: 'absolute',
-    top: 20,
-    right: 15,
-    height: 150,
-    backgroundColor: 'red',
-    paddingBottom: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 3,
-  },
-  statusText: {
-    fontSize: 12,
-    color: 'white',
-  }
+
 }); 
 
 export default ComplaintListTap;

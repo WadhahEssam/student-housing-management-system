@@ -33,6 +33,22 @@ export default class complaints extends Component {
     });
   }
 
+  refreshComplaints = async () => {
+    // getting the complaints
+    const token = await AsyncStorage.getItem('token');
+    axios.post(`${env.url}/getComplaintsForStudent`, qs.stringify({token}))
+    .then(async (response) => {
+      this.setState({complaints: response.data});
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
+  test = () => {
+    console.log(this.state);
+  }
+
   render() {
     if (this.state.loading) {
       return <Expo.AppLoading />;
@@ -45,7 +61,7 @@ export default class complaints extends Component {
             <ComplaintListTap complaints={this.state.complaints} />
           </Tab>
           <Tab heading={<TabHeading><Icon name="add" /></TabHeading>}>
-            <AddComplaintTap/>
+            <AddComplaintTap refreshComplaints={() => {this.refreshComplaints()}} />
           </Tab>
         </Tabs>
       </Container>
