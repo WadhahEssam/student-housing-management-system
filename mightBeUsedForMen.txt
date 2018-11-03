@@ -1,0 +1,24 @@
+          <ListItem key={complaint.id} thumbnail androidRippleColor>
+            <Left style={{width: 30}}>
+              {(isClosed) ? 
+                <Icon style={{color: '#B8BCBC', fontSize: 30, width: 30 }} name="md-lock" />
+              : 
+                <Icon style={{color: '#4050B5', fontSize: 30, width: 30 }} name="md-pulse" />
+              }
+              
+            </Left>
+            <Body>
+              <Text>{complaint.title}</Text>
+              <Text note numberOfLines={1} style={{fontSize: 10}}>{complaint.created_at}</Text>
+              <Text note numberOfLines={7}>{complaint.description}</Text>
+            </Body>
+            {(isClosed) ? 
+              <Right>
+                <Button small style={{backgroundColor: "#B8BCBC"}} >
+                  <Text>Replay</Text>
+                </Button>
+              </Right>
+              : 
+              <View />
+            }
+          </ListItem>
