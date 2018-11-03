@@ -6,6 +6,17 @@ class ComplaintListTap extends Component {
 
   renderListItems = () => {
     if (this.props.complaints != null) {
+      if (this.props.complaints.length == 0) {
+        return (
+          <Card>
+            <CardItem>
+              <Body>
+                <Text>There are no complaints submitted by you yet. !</Text>
+              </Body>
+            </CardItem>
+          </Card>
+        );
+      }
       return this.props.complaints.slice(0).reverse().map((complaint) => {
         const isClosed = complaint.replay !== null;
         const statusClosedLabel = (
@@ -39,7 +50,6 @@ class ComplaintListTap extends Component {
                   <Text note>{complaint.created_at}</Text>
                 </Body>
               </Left>
-
               <Right>
                 {(isClosed) ? statusClosedLabel : statusOpenLabel}
               </Right>
