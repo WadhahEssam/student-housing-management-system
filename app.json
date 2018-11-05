@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Housing",
-    "description": "This project is really great.",
-    "slug": "housing",
+    "name": "KSU housing",
+    "description": "student housing management system for king saud university students developed for SWE 444 class for software engineering course",
+    "slug": "ksu-housing",
     "privacy": "public",
     "sdkVersion": "29.0.0",
     "platforms": [
@@ -19,6 +19,9 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.ksu.ksucampus"
     }
   }
 }
