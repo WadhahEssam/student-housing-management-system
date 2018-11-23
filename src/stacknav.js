@@ -22,7 +22,6 @@ const AppNavigator = createStackNavigator({
   //     header: null,
   //     gesturesEnabled: false,
   //     swipeEnabled: false
-
   //   }
   // },
   LoginScreen:{
@@ -78,7 +77,7 @@ const AppNavigator = createStackNavigator({
   }
 }, 
   // only for testing
-  // {initialRouteName: 'complaints'}
+  {initialRouteName: 'maintainScreen'}
 );
  
 export default AppNavigator;
