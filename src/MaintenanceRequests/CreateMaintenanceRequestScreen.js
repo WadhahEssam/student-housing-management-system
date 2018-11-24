@@ -4,8 +4,9 @@ import {
   View,
   StyleSheet,
   Image,
+  AsyncStorage
 } from 'react-native';
-import { Container, Content, Input, Item, Form, Textarea, Button, Text, Icon } from 'native-base';
+import { Container, Content, Input, Item, Form, Textarea, Button, Text, Icon, Toast } from 'native-base';
 
 const COLORS = {
   eColor: '#BFB48B',
@@ -22,14 +23,44 @@ export default class CreateMaintenanceRequestScreen extends Component {
     title: '',
     description: '',
     isSubmitted: null,
-    selectedType: null,
+    type: null,
+    isFetching: false,
+    showToast: false
+  }
+
+  submitRequest = async () => {
+    this.setState({isFetching: true});
+    const token = await AsyncStorage.getItem('token');
+    const {title, description, type} = this.state;
+    if (title.length == 0 || description.length == 0 || type == null) {
+      Toast.show({
+        text: "Wrong password!",
+        buttonText: "Okay",
+        type: "success"
+      })
+      this.setState({isFetching: false});
+    } else {
+      axios.post(`${env.url}/createMaintenanceRequest`, qs.stringify({token, title, description, type}))
+      .then(async (response) => {
+        this.setState({isFetching: false, isSubmitted: true});
+        this.props.refreshComplaints() ;
+        setTimeout(() => {
+          this.setState({isSubmitted: false});
+        }, 2000)
+      })
+      .catch(error => {
+        console.log(error);
+        Toast.show({text: 'Something wrong happened !', type: 'error'});
+        this.setState({isFetching: false});
+      });
+    }
   }
 
   render() {
     console.log(this.state);
-    const eColor = (this.state.selectedType === 'electricity') ? COLORS.eColorSelected : COLORS.eColor;
-    const cColor = (this.state.selectedType === 'carpentry') ? COLORS.cColorSelected : COLORS.cColor;
-    const pColor = (this.state.selectedType === 'plumbing') ? COLORS.pColorSelected : COLORS.pColor;
+    const eColor = (this.state.type === 'electricity') ? COLORS.eColorSelected : COLORS.eColor;
+    const cColor = (this.state.type === 'carpentry') ? COLORS.cColorSelected : COLORS.cColor;
+    const pColor = (this.state.type === 'plumbing') ? COLORS.pColorSelected : COLORS.pColor;
     return (
       <Container>
         <Content padder>
@@ -54,7 +85,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
             <View style={styles.typeButtons}>
               <Button 
                 style={[styles.typeButton, {backgroundColor: eColor,}]}
-                onPress={() => {this.setState({selectedType: 'electricity'})}}
+                onPress={() => {this.setState({type: 'electricity'})}}
               >
                 <View>
                   <Image
@@ -65,7 +96,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
               </Button>
               <Button 
                 style={[styles.typeButton, {backgroundColor: cColor,}]}
-                onPress={() => {this.setState({selectedType: 'carpentry'})}}
+                onPress={() => {this.setState({type: 'carpentry'})}}
               >
                 <View>
                   <Image
@@ -76,7 +107,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
               </Button>
               <Button 
                 style={[styles.typeButton, {backgroundColor: pColor,}]}
-                onPress={() => {this.setState({selectedType: 'plumbing'})}}
+                onPress={() => {this.setState({type: 'plumbing'})}}
               >
                 <View>
                   <Image
@@ -87,7 +118,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
               </Button>
             </View>
             <Button 
-              onPress={() => {this.submitComplaint()}} 
+              onPress={() => {this.submitRequest()}} 
               style={{marginTop: 10, backgroundColor: '#8A6C99'}} 
               block 
               success={this.state.isSubmitted} 
