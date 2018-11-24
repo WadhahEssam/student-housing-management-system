@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import {
   Text,
@@ -12,7 +13,7 @@ import {
   Container,
 } from 'native-base';
 
-export default class addmaintain extends Component {
+export default class CreateMaintenanceRequestScreen extends Component {
   state = {
     active: 'true',
   }

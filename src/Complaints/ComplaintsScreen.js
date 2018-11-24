@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { StyleSheet, AsyncStorage } from 'react-native';
 import { Container, Icon, Tab, Tabs, TabHeading } from 'native-base';
-import AddComplaintTap from "./Complaints/AddComplaintTap";
-import ComplaintListTap from "./Complaints/ComplaintListTap";
+import AddComplaintTap from "./AddComplaintTap";
+import ComplaintListTap from "./ComplaintListTap";
 import axios from 'axios';
 import qs from 'querystring';
-import { env } from '../env';
+import { env } from '../../env';
 
 export default class complaints extends Component {
   state = {

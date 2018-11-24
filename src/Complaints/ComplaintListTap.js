@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, StyleSheet } from 'react-native';
-import { View, Container, Content, List, Text, Left, Body, Right, Icon, CardItem, Card, Badge } from 'native-base';
+import { StyleSheet, Platform } from 'react-native';
+import { Spinner, View, Container, Content, List, Text, Left, Body, Right, Icon, CardItem, Card, Badge } from 'native-base';
 
 class ComplaintListTap extends Component {
 
@@ -67,7 +67,7 @@ class ComplaintListTap extends Component {
         );
       });
     } else {
-      return <ActivityIndicator size={60} color="#4050B5" />
+      return <Spinner color="#4050B5" />
     }
   }
 

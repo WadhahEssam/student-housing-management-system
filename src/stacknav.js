@@ -2,16 +2,17 @@ import React, { Component, } from "react";
 import { createStackNavigator } from 'react-navigation';
 
 import drawernav from './drawer';
-import complaints from './ComplaintsScreen';
+import complaints from './Complaints/ComplaintsScreen';
 import DrawerButton from './DrawerButton';
 import maintain from "./maintain";
 import rooms from './rooms.js';
 import LoginScreen from './LoginScreen'; 
 import addcomplaints from "./addcomplaints";
 import change from './change';
-import maintainScreen from './maintainScreen';
+import maintainScreen from './MaintenanceRequests/MaintenanceScreen';
 import reserveRoom from './reserveRoom';
 import Splash from './splash'
+import CreateMaintenanceRequestScreen from "./MaintenanceRequests/CreateMaintenanceRequestScreen";
 
 
 const AppNavigator = createStackNavigator({
@@ -35,9 +36,15 @@ const AppNavigator = createStackNavigator({
   Home:{
     screen: drawernav, 
     navigationOptions:({navigation})=>({
-      title:'Home',
+      title:'KSU Campus',
       headerLeft:<DrawerButton navigation={navigation} />
     })
+  },
+  CreateMaintenanceRequest :{
+    screen: CreateMaintenanceRequestScreen, 
+    navigationOptions: {
+      title: 'Create Request',
+    }
   },
   rooms:{
     screen:rooms
@@ -48,10 +55,10 @@ const AppNavigator = createStackNavigator({
       title:'Complaints'
     }
   },
-  maintainScreen:{
+  MaintenanceRequests:{
     screen:maintainScreen,
     navigationOptions:{
-      title:'Maintainence'
+      title:'Maintenance Requests'
     }
   },
   maintain:{
@@ -77,7 +84,7 @@ const AppNavigator = createStackNavigator({
   }
 }, 
   // only for testing
-  {initialRouteName: 'maintainScreen'}
+  // {initialRouteName: 'MaintenanceRequests'}
 );
  
 export default AppNavigator;

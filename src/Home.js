@@ -195,7 +195,7 @@ export default class home extends Component {
               </Col >
               <Col
                 style={{ backgroundColor: '#B1D49A', borderWidth: 1, borderColor: 'white', }}
-                onPress={() => this.props.navigation.navigate('maintainScreen')}
+                onPress={() => this.props.navigation.navigate('MaintenanceRequests')}
               >
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                   <View>
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
   roomInformationItemBox: {
     height: '100%',
     paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
     borderRightWidth: 1,
     borderColor: 'white',
     backgroundColor: '#E76C7C',
