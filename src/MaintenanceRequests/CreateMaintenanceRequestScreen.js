@@ -14,6 +14,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
     title: '',
     description: '',
     isSubmitted: null,
+    selectedType: null,
   }
 
   render() {
@@ -25,7 +26,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
             <Item regular>
               <Input 
                 value={this.state.title} 
-                onChangeText={(title) => {this.setState({title})}} 
+                onChangeText={(title) => {this.setState({title})}}
                 selectionColor="#4050B5" 
                 placeholder='Title' 
               />
@@ -39,8 +40,48 @@ export default class CreateMaintenanceRequestScreen extends Component {
               bordered 
               placeholder="Description" 
             />
-            <Button onPress={() => {this.submitComplaint()}} style={{marginTop: 10}} block success={this.state.isSubmitted} >
-              <Text>Submit</Text>
+            <View style={styles.typeButtons}>
+              <Button 
+                style={[styles.typeButton, styles.eButton]}
+                onPress={() => {this.setState({selectedType: 'electricity'})}}
+              >
+                <View>
+                  <Image
+                    source={require('../img/light.png')}
+                    style={{ width: 30, height: 30, left: 35}}
+                  />
+                </View>
+              </Button>
+              <Button 
+                style={[styles.typeButton, styles.cButton]}
+                onPress={() => {this.setState({selectedType: 'carpentry'})}}
+              >
+                <View>
+                  <Image
+                    source={require('../img/technics.png')}
+                    style={{ width: 30, height: 30, left: 35}}
+                  />
+                </View>
+              </Button>
+              <Button 
+                style={[styles.typeButton, styles.pButton]}
+                onPress={() => {this.setState({selectedType: 'plumbing'})}}
+              >
+                <View>
+                  <Image
+                    source={require('../img/washing.png')}
+                    style={{ width: 30, height: 30, left: 35}}
+                  />
+                </View>
+              </Button>
+            </View>
+            <Button 
+              onPress={() => {this.submitComplaint()}} 
+              style={{marginTop: 10, backgroundColor: '#8A6C99'}} 
+              block 
+              success={this.state.isSubmitted} 
+            >
+              <Text>SUBMIT</Text>
             </Button>
           </Form>
           <View alignItems="cetner" style={styles.infoBox}>
@@ -55,5 +96,23 @@ export default class CreateMaintenanceRequestScreen extends Component {
   }
 }
 const styles = StyleSheet.create({
-
+  typeButtons: {
+    marginTop: 10,
+    marginBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  typeButton: {
+    width: 100,
+    height: 50
+  },
+  eButton: {
+    backgroundColor: '#BFB48B',
+  },
+  cButton: {
+    backgroundColor: '#C2776F',
+  },
+  pButton: {
+    backgroundColor: '#838383',
+  }
 }); 
