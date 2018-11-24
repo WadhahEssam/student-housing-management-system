@@ -4,7 +4,9 @@ import {
   View,
   StyleSheet,
   Image,
-  AsyncStorage
+  AsyncStorage,
+  RefreshControl,
+  ScrollView,
 } from 'react-native';
 import {
   Icon,
@@ -32,6 +34,7 @@ export default class addmaintain extends Component {
     active: 'true',
     requests: null,
     viewType: 'all',
+    refreshing: false,
   }
 
   async componentWillMount() {
@@ -55,12 +58,17 @@ export default class addmaintain extends Component {
     });
   }
 
+  _onRefresh = () => {
+    this.setState({refreshing: true});
+    this.refreshRequests();
+  }
+
   refreshRequests = async () => {
     // getting the complaints
     const token = await AsyncStorage.getItem('token');
     axios.post(`${env.url}/getMaintenanceRequestsForStudent`, qs.stringify({token}))
     .then(async (response) => {
-      this.setState({requests: response.data, });
+      this.setState({requests: response.data, refreshing: false});
     })
     .catch(error => {
       console.log(error);
@@ -125,6 +133,10 @@ export default class addmaintain extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return <Expo.AppLoading />;
+    }
+    
     console.log(this.state);
     return (
       <Container>
@@ -170,11 +182,18 @@ export default class addmaintain extends Component {
           </Body>
         </Header>
 
-        <Content>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+        >
           <List>
             {this.renderRequests()}
           </List>
-        </Content>
+        </ScrollView>
 
         <Fab
           active={this.state.active}

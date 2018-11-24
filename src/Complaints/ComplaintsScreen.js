@@ -53,7 +53,6 @@ export default class complaints extends Component {
     if (this.state.loading) {
       return <Expo.AppLoading />;
     }
-
     return(
       <Container>
         <Tabs>
