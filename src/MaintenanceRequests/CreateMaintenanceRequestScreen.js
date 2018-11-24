@@ -7,6 +7,14 @@ import {
 } from 'react-native';
 import { Container, Content, Input, Item, Form, Textarea, Button, Text, Icon } from 'native-base';
 
+const COLORS = {
+  eColor: '#BFB48B',
+  eColorSelected: '#8F8668',
+  cColor: '#C2776F',
+  cColorSelected: '#8C5650',
+  pColor: '#838383',
+  pColorSelected: '#636363',
+}
 
 export default class CreateMaintenanceRequestScreen extends Component {
   state = {
@@ -19,6 +27,9 @@ export default class CreateMaintenanceRequestScreen extends Component {
 
   render() {
     console.log(this.state);
+    const eColor = (this.state.selectedType === 'electricity') ? COLORS.eColorSelected : COLORS.eColor;
+    const cColor = (this.state.selectedType === 'carpentry') ? COLORS.cColorSelected : COLORS.cColor;
+    const pColor = (this.state.selectedType === 'plumbing') ? COLORS.pColorSelected : COLORS.pColor;
     return (
       <Container>
         <Content padder>
@@ -42,7 +53,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
             />
             <View style={styles.typeButtons}>
               <Button 
-                style={[styles.typeButton, styles.eButton]}
+                style={[styles.typeButton, {backgroundColor: eColor,}]}
                 onPress={() => {this.setState({selectedType: 'electricity'})}}
               >
                 <View>
@@ -53,7 +64,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
                 </View>
               </Button>
               <Button 
-                style={[styles.typeButton, styles.cButton]}
+                style={[styles.typeButton, {backgroundColor: cColor,}]}
                 onPress={() => {this.setState({selectedType: 'carpentry'})}}
               >
                 <View>
@@ -64,7 +75,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
                 </View>
               </Button>
               <Button 
-                style={[styles.typeButton, styles.pButton]}
+                style={[styles.typeButton, {backgroundColor: pColor,}]}
                 onPress={() => {this.setState({selectedType: 'plumbing'})}}
               >
                 <View>
@@ -106,13 +117,4 @@ const styles = StyleSheet.create({
     width: 100,
     height: 50
   },
-  eButton: {
-    backgroundColor: '#BFB48B',
-  },
-  cButton: {
-    backgroundColor: '#C2776F',
-  },
-  pButton: {
-    backgroundColor: '#838383',
-  }
 }); 
