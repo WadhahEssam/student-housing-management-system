@@ -6,7 +6,10 @@ import {
   Image,
   AsyncStorage
 } from 'react-native';
-import { Container, Content, Input, Item, Form, Textarea, Button, Text, Icon, Toast } from 'native-base';
+import { Spinner, Container, Content, Input, Item, Form, Textarea, Button, Text, Icon, Toast } from 'native-base';
+import axios from 'axios';
+import qs from 'querystring';
+import { env } from '../../env';
 
 const COLORS = {
   eColor: '#BFB48B',
@@ -15,6 +18,8 @@ const COLORS = {
   cColorSelected: '#8C5650',
   pColor: '#838383',
   pColorSelected: '#636363',
+  submitButton: '#8A6C99',
+  submitButtonSuccessful: '#3CAB47'
 }
 
 export default class CreateMaintenanceRequestScreen extends Component {
@@ -34,25 +39,39 @@ export default class CreateMaintenanceRequestScreen extends Component {
     const {title, description, type} = this.state;
     if (title.length == 0 || description.length == 0 || type == null) {
       Toast.show({
-        text: "Wrong password!",
-        buttonText: "Okay",
-        type: "success"
+        text: "Please fill the title and the description and select the request type!",
+        type: "danger",
+        duration: 4000
       })
       this.setState({isFetching: false});
     } else {
       axios.post(`${env.url}/createMaintenanceRequest`, qs.stringify({token, title, description, type}))
       .then(async (response) => {
-        this.setState({isFetching: false, isSubmitted: true});
-        this.props.refreshComplaints() ;
+        this.setState({isFetching: false, isSubmitted: true, title: '', description: '', type: ''});
+        // this.props.refreshComplaints() 
         setTimeout(() => {
           this.setState({isSubmitted: false});
         }, 2000)
       })
       .catch(error => {
         console.log(error);
-        Toast.show({text: 'Something wrong happened !', type: 'error'});
+        Toast.show({
+          text: "Something wrong happened !",
+          type: "danger",
+          duration: 4000
+        })
         this.setState({isFetching: false});
       });
+    }
+  }
+
+  renderButtonContent = () => {
+    if (this.state.isFetching) {
+      return <Spinner color="white" />
+    } else if (this.state.isSubmitted) {
+      return <Icon style={{color: 'white'}} name="md-checkmark" />
+    } else {
+      return <Text>Add Request</Text> 
     }
   }
 
@@ -61,11 +80,12 @@ export default class CreateMaintenanceRequestScreen extends Component {
     const eColor = (this.state.type === 'electricity') ? COLORS.eColorSelected : COLORS.eColor;
     const cColor = (this.state.type === 'carpentry') ? COLORS.cColorSelected : COLORS.cColor;
     const pColor = (this.state.type === 'plumbing') ? COLORS.pColorSelected : COLORS.pColor;
+    const submitButtonColor = (!this.state.isSubmitted) ? COLORS.submitButton : COLORS.submitButtonSuccessful;
     return (
       <Container>
         <Content padder>
           <Form>
-            <Item regular>
+            <Item regular style={{borderRadius: 4, marginVertical: 10}}>
               <Input 
                 value={this.state.title} 
                 onChangeText={(title) => {this.setState({title})}}
@@ -77,7 +97,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
               value={this.state.description} 
               onChangeText={(description) => {this.setState({description})}} 
               selectionColor="#4050B5" 
-              style={{paddingVertical: 5}} 
+              style={{paddingVertical: 5, borderRadius: 4, marginVertical: 10}} 
               rowSpan={5} 
               bordered 
               placeholder="Description" 
@@ -119,11 +139,11 @@ export default class CreateMaintenanceRequestScreen extends Component {
             </View>
             <Button 
               onPress={() => {this.submitRequest()}} 
-              style={{marginTop: 10, backgroundColor: '#8A6C99'}} 
+              style={{marginTop: 10, backgroundColor: submitButtonColor}} 
               block 
               success={this.state.isSubmitted} 
             >
-              <Text>SUBMIT</Text>
+              {this.renderButtonContent()}
             </Button>
           </Form>
           <View alignItems="cetner" style={styles.infoBox}>
