@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, AsyncStorage, ToastAndroid, ActivityIndicator } from 'react-native';
-import { Container, Content, Input, Item, Form, Textarea, Button, Text, Icon } from 'native-base';
+import { View, StyleSheet, AsyncStorage, ActivityIndicator } from 'react-native';
+import { Toast, Container, Content, Input, Item, Form, Textarea, Button, Text, Icon } from 'native-base';
 import axios from 'axios';
 import qs from 'querystring';
 import { env } from '../../env';
@@ -19,12 +19,16 @@ class AddComplaintTap extends Component {
     const token = await AsyncStorage.getItem('token');
     const {title, description} = this.state;
     if (title.length == 0 || description == 0) {
-      ToastAndroid.show('Please fill the title and the description !', 4000);
+      Toast.show({
+        text: "Please fill the title and the description !",
+        type: "danger",
+        duration: 4000
+      });
       this.setState({isFetching: false});
     } else {
       axios.post(`${env.url}/createComplaint`, qs.stringify({token, title, description}))
       .then(async (response) => {
-        this.setState({isFetching: false, isSubmitted: true});
+        this.setState({isFetching: false, isSubmitted: true, title: '', description: ''});
         this.props.refreshComplaints() ;
         setTimeout(() => {
           this.setState({isSubmitted: false});
@@ -32,7 +36,11 @@ class AddComplaintTap extends Component {
       })
       .catch(error => {
         console.log(error);
-        ToastAndroid.show('Something wrong happened !', 4000);
+        Toast.show({
+          text: "Something wrong happened !",
+          type: "danger",
+          duration: 4000
+        });
         this.setState({isFetching: false});
       });
     }
