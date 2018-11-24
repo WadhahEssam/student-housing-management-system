@@ -84,7 +84,7 @@ const AppNavigator = createStackNavigator({
   }
 }, 
   // only for testing
-  {initialRouteName: 'CreateMaintenanceRequest'}
+  // {initialRouteName: 'CreateMaintenanceRequest'}
 );
  
 export default AppNavigator;

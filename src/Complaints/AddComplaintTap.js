@@ -53,7 +53,7 @@ class AddComplaintTap extends Component {
       <Container>
         <Content padder>
           <Form>
-            <Item regular>
+            <Item regular style={{borderRadius: 4, marginVertical: 10}}>
               <Input 
                 value={this.state.title} 
                 onChangeText={(title) => {this.setState({title})}} 
@@ -65,12 +65,17 @@ class AddComplaintTap extends Component {
               value={this.state.description} 
               onChangeText={(description) => {this.setState({description})}} 
               selectionColor="#4050B5" 
-              style={{paddingVertical: 5}} 
+              style={{paddingVertical: 5, borderRadius: 4, marginVertical: 10}} 
               rowSpan={5} 
               bordered 
               placeholder="Description" 
             />
-            <Button onPress={() => {this.submitComplaint()}} style={{marginTop: 10}} block success={this.state.isSubmitted} >
+            <Button 
+              onPress={() => {this.submitComplaint()}} 
+              style={{marginTop: 10, backgroundColor: '#8A6C99'}} 
+              block 
+              success={this.state.isSubmitted} 
+            >
               {this.renderButtonContent()}
             </Button>
           </Form>
