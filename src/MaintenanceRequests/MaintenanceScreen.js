@@ -101,6 +101,7 @@ export default class addmaintain extends Component {
               break;
           }
           
+          if (this.state.viewType === 'all' || this.state.viewType === request.type)
           return (
             <ListItem key={request.id} avatar>
               <Left>
