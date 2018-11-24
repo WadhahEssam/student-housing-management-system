@@ -18,7 +18,8 @@ import {
   Right,
   Body,
   Segment,
-  Content,
+  Card,
+  CardItem,
   List,
   ListItem,
   Thumbnail,
@@ -82,16 +83,13 @@ export default class addmaintain extends Component {
           <Card>
             <CardItem>
               <Body>
-                <Text>There are no complaints submitted by you yet. !</Text>
+                <Text>There are no requests submitted by you yet. !</Text>
               </Body>
             </CardItem>
           </Card>
         );
       } else {
         return  this.state.requests.slice(0).reverse().map((request) => {
-          const eImage = require('../img/flash.png');
-          const cImage = require('../img/wrench.png');
-          const pImage = require('../img/watering.png');
 
           if (request.status === 'in_process') {
             request.status = 'in process'
