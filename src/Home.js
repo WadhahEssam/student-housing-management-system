@@ -212,7 +212,6 @@ export default class home extends Component {
             </Row>
             <Row>
               <Col
-
                 style={{ backgroundColor: '#CAB7A2', borderWidth: 1, borderColor: 'white', }}
                 onPress={() => this.props.navigation.navigate('reserveRoom')}
               >
@@ -230,6 +229,9 @@ export default class home extends Component {
               </Col >
               <Col
                 style={{ backgroundColor: '#858786', borderWidth: 1, borderColor: 'white', }}
+                onPress={() => axios.post(`${env.url}/clearStudentRoom`, qs.stringify({ token: this.state.token }))
+                  .then(() => {this.setState({room: ""})})
+                }
               >
                 <View style={{
                   flex: 1, justifyContent: 'center', alignItems: 'center',
