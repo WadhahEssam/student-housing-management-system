@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import { Spinner, View, Container, Content, List, Text, Left, Body, Right, Icon, CardItem, Card, Badge } from 'native-base';
 
 class ComplaintListTap extends Component {
+  state = {
+    refreshing: false
+  }
+
+  _onRefresh = async () => {
+    this.setState({refreshing: true});
+    await this.props.refreshComplaints();
+    this.setState({refreshing: false});
+  }
 
   renderListItems = () => {
     if (this.props.complaints != null) {
@@ -75,11 +84,19 @@ class ComplaintListTap extends Component {
     console.log(this.props.complaints);
     return (
       <Container>
-        <Content padder>
+        <ScrollView 
+          padder
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+        >
           <List>
             {this.renderListItems()}
           </List>
-        </Content>
+        </ScrollView>
       </Container>
     )
   }

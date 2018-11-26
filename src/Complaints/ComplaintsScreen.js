@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, AsyncStorage } from 'react-native';
-import { Container, Icon, Tab, Tabs, TabHeading } from 'native-base';
+import { Container, Icon, Tab, Tabs, TabHeading, Image } from 'native-base';
 import AddComplaintTap from "./AddComplaintTap";
 import ComplaintListTap from "./ComplaintListTap";
 import axios from 'axios';
@@ -57,7 +57,7 @@ export default class complaints extends Component {
       <Container>
         <Tabs>
           <Tab heading={<TabHeading><Icon name="list" /></TabHeading>}>
-            <ComplaintListTap complaints={this.state.complaints} />
+            <ComplaintListTap complaints={this.state.complaints} refreshComplaints={() => {this.refreshComplaints()}}/>
           </Tab>
           <Tab heading={<TabHeading><Icon name="add" /></TabHeading>}>
             <AddComplaintTap refreshComplaints={() => {this.refreshComplaints()}} />
