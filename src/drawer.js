@@ -15,6 +15,7 @@ const drawernav = createDrawerNavigator({
   Complaints: {
     screen: ComplaintsScreen
   }
+  
 });
 
 export default drawernav;

@@ -12,12 +12,12 @@ import qs from 'querystring';
 import { env } from '../../env';
 
 const COLORS = {
-  eColor: '#BFB48B',
-  eColorSelected: '#8F8668',
-  cColor: '#C2776F',
-  cColorSelected: '#8C5650',
-  pColor: '#838383',
-  pColorSelected: '#636363',
+  eColor: '#A39977',
+  eColorSelected: '#8A6C99',
+  cColor: '#A66962',
+  cColorSelected: '#8A6C99',
+  pColor: '#9C9C9C',
+  pColorSelected: '#8A6C99',
   submitButton: '#8A6C99',
   submitButtonSuccessful: '#3CAB47'
 }
@@ -51,7 +51,7 @@ export default class CreateMaintenanceRequestScreen extends Component {
         // this.props.refreshComplaints() 
         setTimeout(() => {
           this.setState({isSubmitted: false});
-        }, 2000)
+        }, 1000)
       })
       .catch(error => {
         console.log(error);

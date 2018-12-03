@@ -97,13 +97,13 @@ export default class addmaintain extends Component {
           let image = '';
           switch (request.type) {
             case 'electricity':
-              image = require('../img/flash.png');
+              image = require('../img/light.png');
               break;
             case 'plumbing':
-              image = require('../img/watering.png');
+              image = require('../img/washing.png');
               break;
             case 'carpentry':
-              image = require('../img/wrench.png');
+              image = require('../img/technics.png');
               break;
           }
           
@@ -119,7 +119,14 @@ export default class addmaintain extends Component {
               </Body>
               <Right>
                 <Text style={{fontSize: 9, color: 'grey'}} note>{request.created_at}</Text>
-                <Badge primary={request.status === 'in process'} danger={request.status === 'closed'} success={request.status === 'open'} style={{marginTop: 5, height: 22, opacity: 0.9}}><Text style={{color: 'white', fontSize: 11}}>{request.status}</Text></Badge>
+                <Badge 
+                  primary={request.status === 'in process'} 
+                  danger={request.status === 'closed'} 
+                  success={request.status === 'open'} 
+                  style={{marginTop: 5, height: 22, opacity: 0.9}}
+                >
+                  <Text style={{color: 'white', fontSize: 11}}>{request.status}</Text>
+                </Badge>
               </Right>
             </ListItem>
           );
@@ -153,7 +160,7 @@ export default class addmaintain extends Component {
                 onPress={() => {this.setState({viewType: 'electricity'})}}
               >
                 <Image
-                  source={(this.state.viewType === 'electricity') ? require('../img/flash-2.png') : require('../img/flash.png')}
+                  source={(this.state.viewType === 'electricity') ? require('../img/light.png') : require('../img/light.png')}
                   style={{ width: 20, height: 20, marginHorizontal: 10}}
                 />
               </Button>
@@ -162,7 +169,7 @@ export default class addmaintain extends Component {
                 onPress={() => {this.setState({viewType: 'plumbing'})}}
               >
                 <Image
-                  source={(this.state.viewType === 'plumbing') ? require('../img/watering-2.png') : require('../img/watering.png')}
+                  source={(this.state.viewType === 'plumbing') ? require('../img/washing.png') : require('../img/washing.png')}
                   style={{ width: 20, height: 20, marginHorizontal: 10}}
                 />
               </Button>
@@ -172,7 +179,7 @@ export default class addmaintain extends Component {
                 onPress={() => {this.setState({viewType: 'carpentry'})}}
               >
                 <Image
-                  source={(this.state.viewType === 'carpentry') ? require('../img/wrench-2.png') : require('../img/wrench.png')}
+                  source={(this.state.viewType === 'carpentry') ? require('../img/technics.png') : require('../img/technics.png')}
                   style={{ width: 20, height: 20, marginHorizontal: 10}}
                 />
               </Button>
@@ -199,7 +206,7 @@ export default class addmaintain extends Component {
           containerStyle={{ }}
           style={{ backgroundColor: '#8A6C99' }}
           position="bottomRight"
-          onPress={() => this.props.navigation.navigate('CreateMaintenanceRequest')}
+          onPress={() => this.props.navigation.navigate('CreateMaintenanceRequest')}  
         >
           <Icon name="add" />
         </Fab>

@@ -69,5 +69,9 @@ export default class complaints extends Component {
 }
 
 const styles = StyleSheet.create({
-  
+  icon: {
+    marginTop: 5,
+    width: 32,
+    height: 32,
+  },
 }); 
